@@ -193,8 +193,8 @@
                     limpa_formulário_cep();
                   }
                 };
-              </script>
-            </head>
+        </script>
+      </head>
 
             <body>
               <div id="wrapper">
@@ -476,7 +476,7 @@
                                           <?php  
                                           include_once("conexao.php");
 
-                                          $sql = "select nome,coren,email,datacadastro,bairro,cep,cidade,complemento,coren,datacadastro,datanasc,email,estado,fixo,idenfermeiro,logradouro,nome,numero,sexo,turno from enfermeiro";
+                                          $sql = "select nome,coren,email,datacadastro,bairro,cep,cidade,complemento,coren,datacadastro,datanasc,email,estado,fixo,idenfermeiro,logradouro,nome,numero,sexo,turno,celular from enfermeiro";
 
                                           $consulta = mysqli_query($conexao,$sql); 
                                           if ($resultado = $consulta){
@@ -488,12 +488,9 @@
                                                 <td ><?php printf($obj->email) ?></td>
                                                 <td ><?php printf($obj->datacadastro) ?></td>
                                                 <td>
-                                                <!--<a data-toggle='tooltip' data-placement='top'  data-toggle="modal" data-target="#exampleModal">
-                                                </a>-->
-
-                                                <button type="button" title='modificar' style='margin-right:5px' class='btn btn-primary btn-sm' data-toggle="modal" data-target="#exampleModal">
-                                                  <i style='color:#fff' class='glyphicon glyphicon-edit'></i>
-                                                </button>
+                                                
+                                                <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $obj->idenfermeiro; ?>" data-whatevernome="<?php echo $obj->nome; ?>" data-whatevercoren="<?php echo $obj->coren; ?>" data-whateverbairro="<?php echo $obj->bairro;?>" data-whatevercep="<?php echo $obj->cep;?>" data-whatevercidade="<?php echo $obj->cidade;?>" data-whatevercomplemento="<?php echo $obj->complemento;?>" data-whateverdatacadastro="<?php echo $obj->datacadastro;?>" data-whateverdatanasc="<?php echo $obj->datanasc;?>" data-whateveremail="<?php echo $obj->email;?>" data-whateverestado="<?php echo $obj->estado;?>"   data-whateverlogradouro="<?php echo $obj->logradouro;?>" data-whatevernumero="<?php echo $obj->numero;?>" data-whateversexo="<?php echo $obj->sexo;?>" data-whateverturno="<?php echo $obj->turno;?>" data-whateverfixo="<?php echo $obj->fixo;?>" data-whatevercelular="<?php echo $obj->celular;?>" >Editar</button>
+                                                <button type="button" class="btn btn-xs btn-danger">Apagar</button>
                                                 
                                                 <!-- Modal -->
                                                 <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -512,93 +509,96 @@
                                                       <div class="modal-body">
                                                         <div class="tab-pane fade in active" id="Cadastrar">
                                                           <div class="row">
-                                                            <form role="form" action="cadastro_enf.php" method="post">
-
+                                                            <form role="form" action="edita_enf.php" method="post">
+                                                              <!--
                                                               <div class="form-group-sm col-sm-6">
                                                                 <label>CPF</label>
                                                                 <input name="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" value = "" required>
                                                               </div>
-                                                              
+                                                              -->
                                                               <div class="form-group-sm col-md-6">
                                                                 <label>COREN</label>
-                                                                <input name="coren" type="text" class="form-control" placeholder="Informe o número do COREN" value = "<?php printf($obj->coren) ?>" required autofocus>
+                                                                <input name="coren" type="text" class="form-control" placeholder="Informe o número do COREN" id="coren" required autofocus>
                                                               </div>                            
 
                                                               <div class="form-group-sm col-md-6">
                                                                 <label>Nome</label>
-                                                                <input name="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$" value = "<?php printf($obj->nome) ?>" required>
+                                                                <input name="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$" id="nome" required>
                                                               </div>
 
                                                               <div class="form-group-sm col-sm-6">
                                                                <label>E-mail</label>
-                                                               <input name="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" value = "<?php printf($obj->email) ?>">
+                                                               <input name="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email">
                                                              </div>
                                                              
                                                              <div class="form-group-sm col-sm-6">
                                                               <label>Telefone Fixo</label>
-                                                              <input name="fixo" type="phone" class="form-control" placeholder="Digite seu telefone" id="telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );" value = "<?php printf($obj->fixo) ?>">
+                                                              <input name="fixo" type="phone" class="form-control" placeholder="Digite seu telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );" id="fixo">
                                                               <!--pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
                                                             </div>
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>Telefone Móvel</label>
-                                                              <input name="celular" type="phone" class="form-control" placeholder="Digite seu número de celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );" value = "<?php printf($obj->numero) ?>">
+                                                              <input name="celular" type="phone" class="form-control" placeholder="Digite seu número de celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );" id="celular">
                                                               <!-- pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
                                                             </div>
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>Data de Nascimento</label>
-                                                              <input name="dataNasc" type="date" class="form-control" placeholder="dd/mm/aaaa" id="data" value = "<?php printf($obj->datanasc) ?>" required>
+                                                              <input name="dataNasc" type="date" class="form-control" placeholder="dd/mm/aaaa" id="data" required>
                                                             </div>                            
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>Sexo</label>
-                                                              <select class="form-control mr-sm-2" name="sexo" required>
+                                                              <select class="form-control mr-sm-2" name="sexo"  id="sexo" required>
                                                                 <option>Selecione</option>
                                                                 <option>Masculino</option>
                                                                 <option>Feminino</option>
                                                               </select>
                                                             </div>
-
+                                                            <!--
                                                             <div class="form-group-sm col-md-6">
                                                               <label>Especialidade</label>
                                                               <input name="especialidade" type="text" class="form-control" placeholder="Digite a especialidade" pattern="[a-zA-Z\s]+$" value = "" required>
                                                             </div>
+                                                            -->
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>CEP</label>
-                                                              <input name="cep" id="cep" type="text" class="form-control" placeholder="Informe o CEP" id="cep" onblur="pesquisacep(this.value);" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" value = "<?php printf($obj->cep) ?>" required>
+                                                              <input name="cep"  type="text" class="form-control" placeholder="Informe o CEP" id="cep" onblur="pesquisacep(this.value);" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" id="cep" required>
                                                             </div>
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>Logradouro</label>
-                                                              <input name="logradouro" id="rua" type="text" placeholder="Infome o endereço" class="form-control" value = "<?php printf($obj->logradouro) ?>"  required>
+                                                              <input name="logradouro"  type="text" placeholder="Infome o endereço" class="form-control" id="logradouro"  required>
                                                             </div>
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>Número</label>
-                                                              <input name="endNumero" id="endNumero" type="number" placeholder="Nº 1234" class="form-control" value = "<?php printf($obj->numero) ?>"  required>
+                                                              <input name="endNumero" type="number" placeholder="Nº 1234" class="form-control" id="numero"  required>
                                                             </div>
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>Complemento</label>
-                                                              <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control" value = "<?php printf($obj->complemento) ?>"  required>
+                                                              <input name="complemento"  type="text" placeholder="Complemento" class="form-control" id="complemento"  required>
                                                             </div>
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>Bairro</label>
-                                                              <input name="bairro" id="bairro" type="text" placeholder="Informe o bairro" class="form-control" value = "<?php printf($obj->bairro) ?>"  required>
+                                                              <input name="bairro"  type="text" placeholder="Informe o bairro" class="form-control" id="bairro"  required>
                                                             </div>
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>Cidade</label>
-                                                              <input name="cidade" id="cidade" type="text" placeholder="Informe a cidade" class="form-control" value = "<?php printf($obj->cidade) ?>"  required>
+                                                              <input name="cidade" type="text" placeholder="Informe a cidade" class="form-control" id="cidade"  required>
                                                             </div>
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>UF</label> 
-                                                              <input name="estado" id="uf" type="text" class="form-control" value = "<?php printf($obj->estado) ?>"  required>                                 
+                                                              <input name="estado" type="text" class="form-control" id="estado"  required>                                 
                                                             </div>
+
+                                                            <input name="idenf" type="hidden" class="form-control" id="idenf" value="">
 
                                                             <div class="col-md-7">
                                                               <!--alinhamento dos Botões-->
@@ -627,9 +627,6 @@
                                                     </div>
                                                   </div>
 
-                                                  <a data-toggle="tooltip" data-placement="top" title="Eliminar" class="btn btn-danger btn-sm" href="" onclick="">
-                                                    <i style="color:#fff" class="glyphicon glyphicon-trash"></i>
-                                                  </a>
                                                 </td>    
                                               </tr>
                                               <?php
@@ -674,15 +671,57 @@
             <!-- Custom Theme JavaScript -->
             <script src="../dist/js/sb-admin-2.js"></script>
 
-            <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-            <script>
-              $(document).ready(function() {
-                $('#dataTables-example').DataTable({
-                  responsive: true
-                });
-              });
+
+
+            <script type="text/javascript">
+              $('#exampleModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal
+                var idenf = button.data('whatever') // Extract info from data-* attributes
+                var nome = button.data('whatevernome')
+                var email = button.data('whateveremail')
+                var coren = button.data('whatevercoren')
+                var bairro = button.data('whateverbairro')
+                var cep = button.data('whatevercep')
+                var complemento  = button.data('whatevercomplemento')
+                ///var datacadastro = button.data('whateverdatacadastro')
+                var datanasc = button.data('whateverdatanasc')
+                var estado = button.data('whateverestado')
+                var logradouro = button.data('whateverlogradouro')
+                var numero = button.data('whatevernumero')
+                var sexo = button.data('whateversexo')
+                var turno = button.data('whateverturno') 
+                var fixo = button.data('whateverfixo')
+                var cidade = button.data('whatevercidade')
+                var celular = button.data('whatevercelular')
+
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this)
+                //modal.find('.modal-title').text('ID ' + idenf)
+                modal.find('#idenf').val(idenf)
+                modal.find('#nome').val(nome)
+                modal.find('#email').val(email)
+                modal.find('#coren').val(coren)
+                modal.find('#bairro').val(bairro)
+                modal.find('#cep').val(cep)
+                modal.find('#complemento').val(complemento)
+                //modal.find('#datacadastro').val(datacadastro)
+                modal.find('#data').val(datanasc)
+                modal.find('#estado').val(estado)
+                modal.find('#logradouro').val(logradouro)
+                modal.find('#numero').val(numero)
+                modal.find('#sexo').val(sexo)
+                modal.find('#fixo').val(fixo)
+                modal.find('#cidade').val(cidade)
+                modal.find('#turno').val(turno)
+                modal.find('#celular').val(celular)
+                
+              })
             </script>
 
           </body>
 
           </html>
+<!--
+data-whatever data-whatevernome data-whatevercoren data-whateverbairro data-whatevercep data-whatevercidade data-whatevercomplemento data-whateverdatacadastro data-whateverdatanasc data-whateveremail data-whateverestado data-whateverlogradouro data-whatevernumero data-whateversexo data-whateverturno
+-->
