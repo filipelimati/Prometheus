@@ -5,12 +5,10 @@ include('conexao.php');
 
 $coren 			= $_POST ["coren"];
 $nome			= $_POST ["nome"];	//atribuição do campo "nome" vindo do formulário para variavel
-$usuario		= $_POST ["usuario"];
-$senha			= $_POST ["senha"];
-$senhaConfirm	= $_POST ["senhaConfirm"];	
 $email			= $_POST ["email"];	//atribuição do campo "email" vindo do formulário para variavel
 $cpf			= $_POST ["cpf"];
 $fixo			= $_POST ["fixo"];	//atribuição do campo "ddd" vindo do formulário para variavel
+$celular		= $_POST ["celular"];
 $dataNasc		= $_POST ["dataNasc"];	//atribuição do campo "telefone" vindo do formulário para variavel
 $sexo 			= $_POST ["sexo"];	//atribuição do campo "endereco" vindo do formulário para variavel
 $cep			= $_POST ["cep"];	//atribuição do campo "cidade" vindo do formulário para variavel
@@ -20,6 +18,10 @@ $complemento	= $_POST ["complemento"];	//atribuição do campo "pais" vindo do f
 $bairro 		= $_POST ["bairro"];	//atribuição do campo "endereco" vindo do formulário para variavel
 $cidade			= $_POST ["cidade"];	//atribuição do campo "cidade" vindo do formulário para variavel
 $estado			= $_POST ["estado"];	//atribuição do campo "estado" vindo do formulário para variavel
+
+$usuario		= $_POST ["usuario"];
+$senha			= md5($_POST ["senha"]);
+$perfil 		= 'Técnico';
 
 /*
 $login	= $_POST ["login"];	//atribuição do campo "login" vindo do formulário para variavel
@@ -39,12 +41,14 @@ if (!$banco)
 */
 //echo " '$fixo'</p>";
 
-$query = "INSERT INTO tecnico (coren,NOME,'USUARIO','SENHA','SENHACONFIRM',EMAIL,CPF,FIXO,CELULAR,DATANASC,SEXO,CEP,logradouro,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,ESTADO)
-VALUES ('$coren','$nome',''$senha','$senhaConfirm','$email','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado')";
+$query = "INSERT INTO tecnico (COREN, NOME, EMAIL, CPF, FIXO, CELULAR, DATANASC, SEXO, CEP, logradouro, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO) VALUES ('$coren','$nome','$email','$cpf','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado')";
 
+$query2 = "INSERT INTO usuario (NOME,USUARIO,EMAIL,PERFIL,SENHA) VALUES ('$nome','$usuario','$email','$perfil','$senha')";
 
 
 mysqli_query($conexao,$query); //Realiza a consulta
+
+mysqli_query($conexao,$query2);
  
 if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
 	

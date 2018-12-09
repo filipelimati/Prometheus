@@ -17,6 +17,7 @@ $complemento	= $_POST ["complemento"];	//atribuição do campo "pais" vindo do f
 $bairro 		= $_POST ["bairro"];	//atribuição do campo "endereco" vindo do formulário para variavel
 $cidade			= $_POST ["cidade"];	//atribuição do campo "cidade" vindo do formulário para variavel
 $estado			= $_POST ["estado"];	//atribuição do campo "estado" vindo do formulário para variavel
+$data = date("Y-m-d H:i:s", time());
 
 /*
 $login	= $_POST ["login"];	//atribuição do campo "login" vindo do formulário para variavel
@@ -35,12 +36,13 @@ if (!$banco)
 	die ("Erro de conexão com banco de dados, o seguinte erro ocorreu -> ".mysql_error());
 */
 //echo " '$fixo'</p>";
-
-$query = "INSERT INTO maqueiro (CPF,NOME,EMAIL,TELFIXO,TELMOVEL,DATANASC,SEXO,CEP,logradouro,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,UF)
+ 
+$query = "INSERT INTO maqueiro (CPF,NOME,EMAIL,FIXO,CELULAR,DATANASC,SEXO,CEP,LOGRADOURO,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,ESTADO)
 VALUES ('$cpf','$nome','$email','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado')";
 
+
 mysqli_query($conexao,$query); //Realiza a consulta
- 
+
 if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
 	
 ?>
@@ -50,13 +52,13 @@ if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha,
 	</script>
 <?php
 
-   /* echo "<p>Cadastro feito com sucesso</p>";
-    echo '<a href="cadastro.html">Voltar para formulário de cadastro</a>'; //Apenas um link para retornar para o formulário de cadastro*/
+    // echo "<p>Cadastro feito com sucesso</p>";
+    // echo '<a href="cadastro.html">Voltar para formulário de cadastro</a>'; //Apenas um link para retornar para o formulário de cadastro
 } else {
 ?>
 	<script>
 	alert('Erro, não possível inserir no banco de dados');
-	//location.href="maqueiro.php";
+	location.href="maqueiro.php";
 	</script>
   <?php  
 }
