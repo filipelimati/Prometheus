@@ -18,10 +18,10 @@ $complemento	= $_POST ["complemento"];	//atribuição do campo "pais" vindo do f
 $bairro 		= $_POST ["bairro"];	//atribuição do campo "endereco" vindo do formulário para variavel
 $cidade			= $_POST ["cidade"];	//atribuição do campo "cidade" vindo do formulário para variavel
 $estado			= $_POST ["estado"];	//atribuição do campo "estado" vindo do formulário para variavel
+$data = date("Y-m-d H:i:s", time());
 
 $usuario		= $_POST ["usuario"];
 $senha			= md5($_POST ["senha"]);
-$perfil 		= 'Técnico';
 
 /*
 $login	= $_POST ["login"];	//atribuição do campo "login" vindo do formulário para variavel
@@ -41,17 +41,20 @@ if (!$banco)
 */
 //echo " '$fixo'</p>";
 
-$query = "INSERT INTO tecnico (COREN, NOME, EMAIL, CPF, FIXO, CELULAR, DATANASC, SEXO, CEP, logradouro, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO) VALUES ('$coren','$nome','$email','$cpf','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado')";
+$query = "INSERT INTO tecnico (COREN, NOME, EMAIL, CPF, FIXO, CELULAR, DATANASC, SEXO, CEP, logradouro, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO, DATACADASTRO) VALUES ('$coren','$nome','$email','$cpf','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado','$data')";
 
-$query2 = "INSERT INTO usuario (NOME,USUARIO,EMAIL,PERFIL,SENHA) VALUES ('$nome','$usuario','$email','$perfil','$senha')";
 
 
 mysqli_query($conexao,$query); //Realiza a consulta
 
-mysqli_query($conexao,$query2);
  
 if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
 	
+$pegaid = mysqli_insert_id($conexao);
+$query2 = "INSERT INTO usuario (USUARIO,SENHA,IDTECNICO) VALUES ('$usuario','$senha','$pegaid')";
+
+mysqli_query($conexao,$query2);
+
 ?>
 	<script>
 	alert('O cadastro foi efetuado com sucesso!');

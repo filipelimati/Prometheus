@@ -3,11 +3,11 @@ session_start();
 include('conexao.php');
 // RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !
 
-$cpf 			= $_POST ["cpf"];
 $nome			= $_POST ["nome"];	//atribuição do campo "nome" vindo do formulário para variavel
 $email			= $_POST ["email"];	//atribuição do campo "email" vindo do formulário para variavel
+$cpf			= $_POST ["cpf"];
 $fixo			= $_POST ["fixo"];	//atribuição do campo "ddd" vindo do formulário para variavel
-$celular		= $_POST ["celular"];	//atribuição do campo "ddd" vindo do formulário para variavel
+$celular		= $_POST ["celular"];
 $dataNasc		= $_POST ["dataNasc"];	//atribuição do campo "telefone" vindo do formulário para variavel
 $sexo 			= $_POST ["sexo"];	//atribuição do campo "endereco" vindo do formulário para variavel
 $cep			= $_POST ["cep"];	//atribuição do campo "cidade" vindo do formulário para variavel
@@ -18,6 +18,9 @@ $bairro 		= $_POST ["bairro"];	//atribuição do campo "endereco" vindo do formu
 $cidade			= $_POST ["cidade"];	//atribuição do campo "cidade" vindo do formulário para variavel
 $estado			= $_POST ["estado"];	//atribuição do campo "estado" vindo do formulário para variavel
 $data = date("Y-m-d H:i:s", time());
+
+$usuario		= $_POST ["usuario"];
+$senha			= md5($_POST ["senha"]);
 
 /*
 $login	= $_POST ["login"];	//atribuição do campo "login" vindo do formulário para variavel
@@ -37,14 +40,19 @@ if (!$banco)
 */
 //echo " '$fixo'</p>";
  
-$query = "INSERT INTO maqueiro (CPF,NOME,EMAIL,FIXO,CELULAR,DATANASC,SEXO,CEP,LOGRADOURO,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,ESTADO)
-VALUES ('$cpf','$nome','$email','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado')";
+
+$query = "INSERT INTO maqueiro (NOME, CPF, EMAIL, FIXO, CELULAR, DATANASC, SEXO, CEP, LOGRADOURO, NUMERO, COMPLEMENTO, BAIRRO, CIDADE, ESTADO, DATACADASTRO) VALUES ('$nome','$cpf','$email','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado','$data')";
 
 
 mysqli_query($conexao,$query); //Realiza a consulta
 
+ 
 if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
 	
+$pegaid = mysqli_insert_id($conexao);
+$query2 = "INSERT INTO usuario (USUARIO,SENHA,IDMAQUEIRO) VALUES ($usuario','$senha','$pegaid')";
+
+mysqli_query($conexao,$query2);
 ?>
 	<script>
 	alert('O cadastro foi efetuado com sucesso!');

@@ -409,7 +409,7 @@
 
                                 <div class="form-group col-sm-4">
                                   <label>Complemento</label>
-                                  <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control" required>
+                                  <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control">
                                 </div>
 
                                 <div class="form-group col-sm-4">

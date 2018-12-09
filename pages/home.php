@@ -183,7 +183,7 @@
                         </div>
                 
                         <div class="col-lg-4 col-md-4">
-                            <a href="consulta.php">
+                            <a href="triagem.php">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         <div class="row">
@@ -201,7 +201,7 @@
                         
 
                         <div class="col-lg-4 col-md-4">
-                            <a href="prontuario.php">
+                            <a href="consulta.php">
                                 <div class="panel panel-yellow">
                                     <div class="panel-heading">
                                         <div class="row">
