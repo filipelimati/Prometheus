@@ -19,10 +19,12 @@ $cidade				= $_POST ["cidade"];	//atribuição do campo "cidade" vindo do formul
 $estado				= $_POST ["estado"];	//atribuição do campo "estado" vindo do formulário para variavel
 $data = date("Y-m-d H:i:s", time());
 
-/*
+
+
+
 $login	= $_POST ["login"];	//atribuição do campo "login" vindo do formulário para variavel
-$senha	= $_POST ["senha"];	//atribuição do campo "senha" vindo do formulário para variavel
-*/
+$senha	= md5($_POST ["senha"]) ;	//atribuição do campo "senha" vindo do formulário para variavel
+
 
 //Gravando no banco de dados !
 /*
@@ -39,10 +41,18 @@ if (!$banco)
 $query = "INSERT INTO enfermeiro (coren,NOME,EMAIL,FIXO,CELULAR,DATANASC,SEXO,CEP,logradouro,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,ESTADO,DATACADASTRO)
 VALUES ('$coren','$nome','$email','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado','$data')";
 
+
+
 mysqli_query($conexao,$query); //Realiza a consulta
+
+
  
 if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
-	
+
+	$pegaid = mysqli_insert_id($conexao);
+	$query2 = "INSERT INTO usuario (USUARIO,SENHA,IDENFERMEIRO) VALUES ('$login','$senha','$pegaid')";
+	mysqli_query($conexao,$query2);
+
 ?>	<script>
 	alert('O cadastro foi efetuado com sucesso!');
 	location.href="enfermeiro.php";
@@ -60,4 +70,4 @@ if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha,
   <?php  
 }
 //echo "Seu cadastro foi realizado com sucesso!<br>Agradecemos a atenção.";
-?> 
+?>

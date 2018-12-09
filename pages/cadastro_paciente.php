@@ -18,6 +18,7 @@ $bairro 		= $_POST ["bairro"];	//atribuição do campo "endereco" vindo do formu
 $cidade			= $_POST ["cidade"];	//atribuição do campo "cidade" vindo do formulário para variavel
 $estado			= $_POST ["estado"];	//atribuição do campo "estado" vindo do formulário para variavel
 $obs			= $_POST ["obs"];
+$data = date("Y-m-d H:i:s", time());
 
 /*
 $login	= $_POST ["login"];	//atribuição do campo "login" vindo do formulário para variavel
@@ -37,10 +38,8 @@ if (!$banco)
 */
 //echo " '$fixo'</p>";
 
-$query = "INSERT INTO paciente (NOME,EMAIL,CPF,FIXO,CELULAR,DATANASC,SEXO,CEP,logradouro,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,ESTADO,OBS)
-VALUES ($nome','$email','$cpf',$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado','$obs')";
-
-
+$query = "INSERT INTO paciente (NOME,EMAIL,CPF,FIXO,CELULAR,DATANASC,SEXO,CEP,logradouro,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,ESTADO,OBS,DATACADASTRO)
+VALUES ('$nome','$email','$cpf','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado','$obs','$data')";
 
 mysqli_query($conexao,$query); //Realiza a consulta
  
