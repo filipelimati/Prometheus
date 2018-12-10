@@ -91,6 +91,12 @@
             cep=cep.replace(/\.(\d{3})(\d)/,".$1-$2")
             return cep
           }
+          function mCoren(coren){
+            coren=coren.replace(/\D/g,"")
+            coren=coren.replace(/(\d{3})(\d)/,"$1.$2")
+            coren=coren.replace(/(\d{3})(\d)/,"$1.$2")
+            return coren
+          }
           function mNum(num){
             num=num.replace(/\D/g,"")
             return num
@@ -194,6 +200,34 @@
                   }
                 };
               </script>
+
+              <script type="text/javascript">
+    
+                function compararSenha( ){
+
+                  senha = document.getElementById('senha').value;
+                  senhaConfirm = document.getElementById('senhaConfirm').value;    
+
+                  if (senha != senhaConfirm)
+                  {
+                    document.getElementById('divSenha').className = 'form-group col-sm-4 has-error';
+                    document.getElementById('divsenhaConfirm').className = 'form-group col-sm-4 has-error';
+                    alert("Senhas diferentes!");
+                    return false;     
+                  }
+                  else{
+                    document.formUser.submit();
+
+                  }      
+                    /*
+                    document.getElementById('senha').className = 'form-control is-valid';
+                    document.getElementById('senhaConfirm').className = 'form-control is-valid';
+                    confirm_password.setCustomValidity('');
+                    */
+                } 
+
+              </script>
+
             </head>
 
             <body>
@@ -324,32 +358,17 @@
                               <!--ABA CADASTRAR-->
                               <div class="tab-pane fade in active" id="Cadastrar">
                                 <div class="row">
-                                  <form role="form" action="cadastro_tecnico.php" method="post">
+                                  <form role="form" id="formUser" action="edita_tec.php" method="post" onsubmit="return compararSenha();">
 
                                     <div class="form-group col-sm-2">
                                       <label>CPF</label>
-                                      <input name="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" required>
+                                      <input name="cpf" id="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" required>
                                     </div>
                                     
                                     <div class="form-group col-md-2">
                                       <label>COREN</label>
-                                      <input name="coren" type="text" class="form-control" placeholder="Digite o COREN" required autofocus>
-                                    </div>
-                                    <!-- 
-                                    <div class="form-group col-sm-5">
-                                      <label>Usuário</label>
-                                      <input name="usuario" type="text" class="form-control" placeholder="Usuário" required="required">
-                                    </div>
-
-                                    <div class="form-group col-sm-6" id="divSenha" required="required">
-                                      <label>Senha</label>
-                                      <input name="senha" id="senha" type="password" class="form-control is-invalid" placeholder="Senha" pattern=".{8,}" title="No mínimo 8 caracteres">
-                                    </div>
-
-                                    <div class="form-group col-sm-6" id="divsenhaConfirm" required="required">
-                                      <label>Confirmar Senha</label>
-                                      <input name="senhaConfirm" id="senhaConfirm" type="password" class="form-control" placeholder="Confirmar Senha" pattern=".{8,}" title="No mínimo 8 caracteres">
-                                    </div> -->                          
+                                      <input name="coren" type="text" class="form-control" placeholder="Digite o COREN" maxlength="7" onkeydown="javascript: fMasc( this, mCoren );" required autofocus>
+                                    </div>                        
 
                                     <div class="form-group col-md-8">
                                       <label>Nome</label>
@@ -358,7 +377,7 @@
 
                                     <div class="form-group col-sm-5">
                                      <label>E-mail</label>
-                                     <input name="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                     <input name="email" id="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                                    </div>
                                    
                                    <div class="form-group col-sm-2">
@@ -387,11 +406,6 @@
                                     </select>
                                   </div>
 
-                                <!--   <div class="form-group col-md-9">
-                                    <label>Especialidade</label>
-                                    <input name="especialidade" type="text" class="form-control" placeholder="Digite a especialidade" pattern="[a-zA-Z\s]+$" required>
-                                  </div>
-                                -->
                                 <div class="form-group col-sm-2">
                                   <label>CEP</label>
                                   <input name="cep" id="cep" type="text" class="form-control" placeholder="Informe o CEP" id="cep" onblur="pesquisacep(this.value);" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" required>
@@ -407,24 +421,53 @@
                                   <input name="endNumero" id="endNumero" type="number" placeholder="Nº 1234" class="form-control" required>
                                 </div>
 
-                                <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-5">
                                   <label>Complemento</label>
                                   <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control">
                                 </div>
 
-                                <div class="form-group col-sm-4">
+                                <div class="form-group col-sm-3">
                                   <label>Bairro</label>
                                   <input name="bairro" id="bairro" type="text" placeholder="Informe o bairro" class="form-control" required>
                                 </div>
 
-                                <div class="form-group col-sm-3">
+                                <div class="form-group col-sm-2">
                                   <label>Cidade</label>
                                   <input name="cidade" id="cidade" type="text" placeholder="Informe a cidade" class="form-control" required>
                                 </div>
 
-                                <div class="form-group col-sm-1">
+                                <div class="form-group col-sm-2">
                                   <label>UF</label> 
-                                  <input name="estado" id="uf" type="text" class="form-control" required>                                 
+                                  <select name="estado" id="uf" type="text" class="form-control mr-sm-2" required>
+                                    <option>Selecione</option>
+                                    <option value="AC">AC</option>
+                                    <option value="AL">AL</option>
+                                    <option value="AP">AP</option>
+                                    <option value="AM">AM</option>
+                                    <option value="BA">BA</option>
+                                    <option value="CE">CE</option>
+                                    <option value="DF">DF</option>
+                                    <option value="ES">ES</option>
+                                    <option value="GO">GO</option>
+                                    <option value="MA">MA</option>
+                                    <option value="MS">MS</option>
+                                    <option value="MT">MT</option>
+                                    <option value="MG">MG</option>
+                                    <option value="PA">PA</option>
+                                    <option value="PB">PB</option>
+                                    <option value="PR">PR</option>
+                                    <option value="PE">PE</option>
+                                    <option value="PI">PI</option>
+                                    <option value="RJ">RJ</option>
+                                    <option value="RN">RN</option>
+                                    <option value="RS">RS</option>
+                                    <option value="RO">RO</option>
+                                    <option value="RR">RR</option>
+                                    <option value="SC">SC</option>
+                                    <option value="SP">SP</option>
+                                    <option value="SE">SE</option>
+                                    <option value="TO">TO</option>
+                                  </select>                               
                                 </div>
 
                                 <div class="form-group col-sm-12">
@@ -437,15 +480,15 @@
 
                                 </div>
 
-                                <div class="form-group col-sm-4" id="divSenha" required="required">
+                                <div class="form-group col-sm-4" id="divSenha">
                                   <label>Senha</label>
-                                  <input name="senha" id="senha" type="password" class="form-control is-invalid" placeholder="Senha" pattern=".{8,}" title="No mínimo 8 caracteres">
+                                  <input name="senha" id="senha" type="password" class="form-control is-invalid" placeholder="Senha" pattern=".{8,}" title="No mínimo 8 caracteres" required>
                                   
                                 </div>
 
-                                <div class="form-group col-sm-4" id="divsenhaConfirm" required="required">
+                                <div class="form-group col-sm-4" id="divsenhaConfirm">
                                   <label>Confirmar Senha</label>
-                                  <input name="senhaConfirm" id="senhaConfirm" type="password" class="form-control" placeholder="Confirmar Senha" pattern=".{8,}" title="No mínimo 8 caracteres">
+                                  <input name="senhaConfirm" id="senhaConfirm" type="password" class="form-control" placeholder="Confirmar Senha" pattern=".{8,}" title="No mínimo 8 caracteres" required>
 
                                 </div>
 
@@ -500,20 +543,20 @@
                                         <?php  
                                         include_once("conexao.php");
 
-                                        $sql = "select COREN,NOME,EMAIL,CPF,FIXO,CELULAR,DATANASC,SEXO,CEP,logradouro,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,ESTADO,DATACADASTRO from tecnico";
+                                        $sql = "select idtecnico,coren,nome,email,cpf,fixo,celular,datanasc,sexo,cep,logradouro,numero,complemento,bairro,cidade,estado,datacadastro from tecnico";
 
                                         $consulta = mysqli_query($conexao,$sql); 
                                         if ($resultado = $consulta){
                                           while ($obj = $resultado->fetch_object()){ 
                                             ?>
                                             <tr>
-                                              <th ><?php printf($obj->COREN) ?></th>
-                                              <td ><?php printf($obj->NOME) ?></td>
-                                              <td ><?php printf($obj->EMAIL) ?></td>
-                                              <td ><?php printf($obj->DATACADASTRO) ?></td>
+                                              <th ><?php printf($obj->coren) ?></th>
+                                              <td ><?php printf($obj->nome) ?></td>
+                                              <td ><?php printf($obj->email) ?></td>
+                                              <td ><?php printf($obj->datacadastro) ?></td>
                                               <td>
 
-                                                <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal"  data-whatevercoren="<?php echo $obj->COREN; ?>" data-whatevernome="<?php echo $obj->NOME; ?>" data-whatevernemail="<?php echo $obj->EMAIL; ?>" data-whatevercpf="<?php echo $obj->CPF; ?>" data-whateverfixo="<?php echo $obj->FIXO; ?>" data-whatevercelular="<?php echo $obj->CELULAR; ?>" data-whateverdatanasc="<?php echo $obj->DATANASC; ?>" data-whateversexo="<?php echo $obj->SEXO; ?>" data-whatevercep="<?php echo $obj->CEP; ?>" data-whateverlogradouro="<?php echo $obj->logradouro; ?>" data-whatevernumero="<?php echo $obj->NUMERO; ?>" data-whatevercomplemento="<?php echo $obj->COMPLEMENTO; ?>" data-whateverbairro="<?php echo $obj->BAIRRO; ?>" data-whatevercidade="<?php echo $obj->CIDADE; ?>" data-whateverestado="<?php echo $obj->ESTADO; ?>" data-whateverdatacadastro="<?php echo $obj->DATACADASTRO; ?>" >Editar</button>
+                                                <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $obj->idtecnico; ?>" data-whatevercoren="<?php echo $obj->coren; ?>" data-whatevernome="<?php echo $obj->nome; ?>" data-whateveremail="<?php echo $obj->email; ?>" data-whatevercpf="<?php echo $obj->cpf; ?>" data-whateverfixo="<?php echo $obj->fixo; ?>" data-whatevercelular="<?php echo $obj->celular; ?>" data-whateverdatanasc="<?php echo $obj->datanasc; ?>" data-whateversexo="<?php echo $obj->sexo; ?>" data-whatevercep="<?php echo $obj->cep; ?>" data-whateverlogradouro="<?php echo $obj->logradouro; ?>" data-whatevernumero="<?php echo $obj->numero; ?>" data-whatevercomplemento="<?php echo $obj->complemento; ?>" data-whateverbairro="<?php echo $obj->bairro; ?>" data-whatevercidade="<?php echo $obj->cidade; ?>" data-whateverestado="<?php echo $obj->estado; ?>" data-whateverdatacadastro="<?php echo $obj->datacadastro; ?>" >Editar</button>
                                                 <button type="button" class="btn btn-xs btn-danger">Apagar</button>
                                                 
                                                 <!-- Modal -->
@@ -532,12 +575,13 @@
                                                       
                                                       <div class="modal-body">
                                                         <div class="tab-pane fade in active" id="Cadastrar">
+
                                                           <div class="row">
                                                             <form role="form" action="edita_tec.php" method="post">
 
                                                               <div class="form-group-sm col-sm-6">
                                                                 <label>CPF</label>
-                                                                <input name="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" value = "" required>
+                                                                <input name="cpf" id="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" value = "" required>
                                                               </div>
                                                               
                                                               <div class="form-group-sm col-md-6">
@@ -552,14 +596,14 @@
 
                                                               <div class="form-group-sm col-sm-6">
                                                                <label>E-mail</label>
-                                                               <input name="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email">
-                                                             </div>
+                                                               <input name="email" id="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                                              </div>
                                                              
-                                                             <div class="form-group-sm col-sm-6">
+                                                              <div class="form-group-sm col-sm-6">
                                                               <label>Telefone Fixo</label>
                                                               <input name="fixo" type="phone" class="form-control" placeholder="Digite seu telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );" id="fixo">
                                                               <!--pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
-                                                            </div>
+                                                              </div>
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>Telefone Móvel</label>
@@ -569,7 +613,7 @@
 
                                                             <div class="form-group-sm col-sm-6">
                                                               <label>Data de Nascimento</label>
-                                                              <input name="dataNasc" type="date" class="form-control" placeholder="dd/mm/aaaa" id="data" required>
+                                                              <input name="dataNasc" id="datanasc" type="date" class="form-control" placeholder="dd/mm/aaaa" id="data" required>
                                                             </div>                            
 
                                                             <div class="form-group-sm col-sm-6">
@@ -622,7 +666,7 @@
                                                             <input name="estado" type="text" class="form-control" id="estado"  required>                                 
                                                           </div>
 
-                                                          <input name="idtec" type="hidden" class="form-control" id="idtec" value="">
+                                                          <input name="idtecnico" type="hidden" class="form-control" id="idtecnico" value="">
 
                                                           <div class="col-md-7">
                                                             <!--alinhamento dos Botões-->
@@ -633,7 +677,7 @@
                                                           </div>
 
                                                           <div class="col-md-3 col-sm-12 col-xs-6">
-                                                            <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
+                                                            <button type="submit" class="btn btn-primary btn-block">ALTERAR</button>
                                                           </div>   
 
                                                         </form>
@@ -700,29 +744,29 @@
             <script type="text/javascript">
               $('#exampleModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
-                var idtec = button.data('whatever') // Extract info from data-* attributes
-                var CPF = button.data('whatevercpf')
-                var NOME = button.data('whatevernome')
-                var EMAIL = button.data('whateveremail')
-                var COREN = button.data('whatevercoren')
-                var BAIRRO = button.data('whateverbairro')
-                var CEP = button.data('whatevercep')
-                var COMPLEMENTO  = button.data('whatevercomplemento')
-                var DATACADASTRO = button.data('whateverdatacadastro')
-                var DATANASC = button.data('whateverdatanasc')
-                var ESTADO = button.data('whateverestado')
+                var idtecnico = button.data('whatever') // Extract info from data-* attributes
+                var cpf = button.data('whatevercpf')
+                var nome = button.data('whatevernome')
+                var email = button.data('whateveremail')
+                var coren = button.data('whatevercoren')
+                var bairro = button.data('whateverbairro')
+                var cep = button.data('whatevercep')
+                var complemento  = button.data('whatevercomplemento')
+                var datacadastro = button.data('whateverdatacadastro')
+                var datanasc = button.data('whateverdatanasc')
+                var estado = button.data('whateverestado')
                 var logradouro = button.data('whateverlogradouro')
-                var NUMERO = button.data('whatevernumero')
-                var SEXO = button.data('whateversexo') 
-                var FIXO = button.data('whateverfixo')
-                var CIDADE = button.data('whatevercidade')
-                var CELULAR = button.data('whatevercelular')
+                var numero = button.data('whatevernumero')
+                var sexo = button.data('whateversexo') 
+                var fixo = button.data('whateverfixo')
+                var cidade = button.data('whatevercidade')
+                var celular = button.data('whatevercelular')
 
                 // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
                 var modal = $(this)
                 //modal.find('.modal-title').text('ID ' + idenf)
-                modal.find('#idtec').val(idtec)
+                modal.find('#idtecnico').val(idtecnico)
                 modal.find('#nome').val(nome)
                 modal.find('#cpf').val(cpf)
                 modal.find('#email').val(email)
@@ -731,7 +775,7 @@
                 modal.find('#cep').val(cep)
                 modal.find('#complemento').val(complemento)
                 modal.find('#datacadastro').val(datacadastro)
-                modal.find('#data').val(datanasc)
+                modal.find('#datanasc').val(datanasc)
                 modal.find('#estado').val(estado)
                 modal.find('#logradouro').val(logradouro)
                 modal.find('#numero').val(numero)
