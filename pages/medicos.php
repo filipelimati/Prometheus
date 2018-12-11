@@ -55,7 +55,7 @@ if($_SESSION['numLogin'] == 0 or null){
     <!--DATATABLE-->
     <script type="text/javascript">
       $(document).ready(function() {
-      $('#tmed').DataTable();
+      $('#tmed1').DataTable();
       } );
     </script>
         
@@ -497,7 +497,7 @@ if($_SESSION['numLogin'] == 0 or null){
 
                                   include_once("conexao.php");
 
-                                  $sql = "SELECT idmedico,cpf,crm,especial,nome,email,fixo,celular,datanasc,sexo,cep,logradouro,numero,complemento,bairro,cidade,estado FROM medico";
+                                  $sql = "SELECT idmedico,cpf,crm,especial,nome,email,fixo,celular,datanasc,sexo,cep,logradouro,numero,complemento,bairro,cidade,estado FROM medico ORDER BY nome";
 
                                   $consulta = mysqli_query($conexao,$sql); 
                                   if ($resultado = $consulta){
@@ -507,32 +507,7 @@ if($_SESSION['numLogin'] == 0 or null){
                                         <th ><?php printf($obj->crm) ?></th>
                                         <td ><?php printf($obj->nome) ?></td>
                                         <td ><?php printf($obj->especial) ?></td>
-                                        <td ><?php printf($obj->email) ?></td>
-
-                                        <!-- Modal Excluir --> 
-                                          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
-                                            <div class="modal-dialog" role="document" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                              <div class="modal-content">
-                                                <div class="modal-header">
-                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
-                                                  <h5 class="modal-title" id="modalLabel">Excluir Médico</h5>
-                                                </div>
-                                                <form role="form" action="exclui_medico.php" method="post">
-                                                  <div class="modal-body">
-                                                    Deseja realmente excluir <?php echo $obj->nome ?>?
-                                                  </div>
-
-                                                  <input name="teste" type="hidden" class="form-control" id="idenf" value="">
-
-                                                  <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary">Sim</button>
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
-                                                  </div>
-                                                </form>
-                                              </div>  
-                                            </div>
-                                          </div> 
-                                          <!-- Fim Modal Excluir -->
+                                        <td ><?php printf($obj->email) ?></td>                                        
 
                                         <td>                                        
                                           <button type="button" 
@@ -559,7 +534,32 @@ if($_SESSION['numLogin'] == 0 or null){
                                             Editar
                                           </button>
 
-                                          <button type="button" class="btn btn-xs btn-danger">Apagar</button>
+                                          <button type="button" class="btn btn-xs btn-danger" data-toggle="modal" data-target="#myModal" data-whateveridmedico="<?php echo $obj->idmedico; ?>" data-whatevernome="<?php echo $obj->nome; ?>">Apagar</button>
+
+                                          <!-- Modal Excluir --> 
+                                          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+                                            <div class="modal-dialog" role="document" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                                                  <h5 class="modal-title" id="modalLabel">Excluir Médico</h5>
+                                                </div>
+                                                <form role="form" action="exclui_medico.php" method="post">
+                                                  <div class="modal-body">
+                                                    Deseja realmente excluir <?php echo $obj->nome ?>?
+                                                  </div>
+
+                                                  <input name="teste" type="hidden" class="form-control" id="idmedico" value="">
+
+                                                  <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Sim</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                                                  </div>
+                                                </form>
+                                              </div>  
+                                            </div>
+                                          </div> 
+                                          <!-- Fim Modal Excluir -->
                                           
                                           <!-- Modal -->
                                           <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -581,12 +581,12 @@ if($_SESSION['numLogin'] == 0 or null){
 
                                                       <input name="idmedico" type="hidden" class="form-control" id="idmedico" value="">
 
-                                                      <div class="form-group col-md-12">
+                                                      <div class="form-group col-md-3">
                                                         <label>CPF</label>
                                                         <input name="cpf" type="text" id="cpf" class="form-control" placeholder="Digite o CPF" onkeydown="javascript: fMasc( this, mCPF );" onblur="javascrip: TestaCPF(cpf);" maxlength="14" required>
                                                       </div>
                                                       
-                                                      <div class="form-group col-md-12">
+                                                      <div class="form-group col-md-3">
                                                         <label>CRM</label>
                                                         <input name="crm" type="text" id="crm" class="form-control" placeholder="Informe o CRM" required autofocus>
                                                       </div>
@@ -737,51 +737,66 @@ if($_SESSION['numLogin'] == 0 or null){
     <script src="../dist/js/sb-admin-2.js"></script>
 
     <script type="text/javascript">
-              $('#exampleModal').on('show.bs.modal', function (event) {
-                var button = $(event.relatedTarget) // Button that triggered the modal
-                var idmedico = button.data('whateveridmedico') // Extract info from data-* attributes
-                var cpf = button.data('whatevercpf')
-                var crm = button.data('whatevercrm')
-                var especial = button.data('whateverespecial')
-                var nome = button.data('whatevernome')
-                var email = button.data('whateveremail')
-                var fixo = button.data('whateverfixo')
-                var celular = button.data('whatevercelular')
-                var datanasc = button.data('whateverdatanasc')
-                var sexo = button.data('whateversexo')
-                var cep = button.data('whatevercep')
-                var logradouro = button.data('whateverlogradouro')
-                var numero = button.data('whatevernumero')
-                var complemento  = button.data('whatevercomplemento')
-                var bairro = button.data('whateverbairro')
-                var cidade = button.data('whatevercidade')
-                var estado = button.data('whateverestado')
+      $('#exampleModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var idmedico = button.data('whateveridmedico') // Extract info from data-* attributes
+        var cpf = button.data('whatevercpf')
+        var crm = button.data('whatevercrm')
+        var especial = button.data('whateverespecial')
+        var nome = button.data('whatevernome')
+        var email = button.data('whateveremail')
+        var fixo = button.data('whateverfixo')
+        var celular = button.data('whatevercelular')
+        var datanasc = button.data('whateverdatanasc')
+        var sexo = button.data('whateversexo')
+        var cep = button.data('whatevercep')
+        var logradouro = button.data('whateverlogradouro')
+        var numero = button.data('whatevernumero')
+        var complemento  = button.data('whatevercomplemento')
+        var bairro = button.data('whateverbairro')
+        var cidade = button.data('whatevercidade')
+        var estado = button.data('whateverestado')
 
-                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-                var modal = $(this)
-                modal.find('idmedico').val(idmedico)
-                modal.find('#cpf').val(cpf)
-                modal.find('#crm').val(crm)
-                modal.find('#especial').val(especial)                
-                modal.find('#nome').val(nome)
-                modal.find('#email').val(email)
-                modal.find('#fixo').val(fixo)
-                modal.find('#celular').val(celular)
-                modal.find('#data').val(datanasc)
-                modal.find('#sexo').val(sexo)
-                modal.find('#cep').val(cep)
-                modal.find('#rua').val(logradouro)
-                modal.find('#numero').val(numero)
-                modal.find('#complemento').val(complemento)
-                modal.find('#bairro').val(bairro)
-                modal.find('#cidade').val(cidade)
-                modal.find('#estado').val(estado)             
-               
-                
-                
-              })
-            </script>
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('#idmedico').val(idmedico)
+        modal.find('#cpf').val(cpf)
+        modal.find('#crm').val(crm)
+        modal.find('#especial').val(especial)                
+        modal.find('#nome').val(nome)
+        modal.find('#email').val(email)
+        modal.find('#fixo').val(fixo)
+        modal.find('#celular').val(celular)
+        modal.find('#data').val(datanasc)
+        modal.find('#sexo').val(sexo)
+        modal.find('#cep').val(cep)
+        modal.find('#rua').val(logradouro)
+        modal.find('#numero').val(numero)
+        modal.find('#complemento').val(complemento)
+        modal.find('#bairro').val(bairro)
+        modal.find('#cidade').val(cidade)
+        modal.find('#estado').val(estado)             
+       
+        
+        
+      })
+    </script>
+
+    <script type="text/javascript">
+      $('#myModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var idmedico = button.data('whateveridmedico') // Extract info from data-* attributes
+        var nome = button.data('whatevernome')
+
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        //modal.find('.modal-title').text('ID ' + idenf)
+        modal.find('#idmedico').val(idmedico)
+        modal.find('#nome').val(nome)
+      })
+    </script>
 
   </body>
 

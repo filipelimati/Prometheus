@@ -22,7 +22,7 @@ if(mysqli_affected_rows($conexao) == 1){
 ?>
 	<script>
 		alert('Erro, não foi possível excluir!');
-		/location.href="paciente.php";
+		location.href="paciente.php";
 	</script>
   <?php  
 }

@@ -94,7 +94,7 @@ if($_SESSION['numLogin'] == 0 or null){
       }
 
       $(document).ready(function() {
-        $('#tenf').DataTable({
+        $('#tenf1').DataTable({
           "language": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -486,7 +486,7 @@ if($_SESSION['numLogin'] == 0 or null){
                                   <?php  
                                   include_once("conexao.php");
 
-                                  $sql = "select idpaciente,nome,email,cpf,fixo,celular,datanasc,sexo,cep,logradouro,numero,complemento,bairro,cidade,estado,obs,datacadastro from paciente";
+                                  $sql = "SELECT idpaciente,nome,email,cpf,fixo,celular,datanasc,sexo,cep,logradouro,numero,complemento,bairro,cidade,estado,obs,datacadastro FROM paciente ORDER BY nome";
 
                                   $consulta = mysqli_query($conexao,$sql); 
                                   if ($resultado = $consulta){

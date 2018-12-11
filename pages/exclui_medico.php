@@ -1,3 +1,4 @@
+
 <?php 
 session_start();
 include('conexao.php');
@@ -5,18 +6,18 @@ include('conexao.php');
 
 $teste = $_POST ["teste"];
 
-$queryaux = "DELETE FROM usuario WHERE idenfermeiro = '$teste'";
+$queryaux = "DELETE FROM usuario WHERE idmedico = '$teste'";
 
 mysqli_query($conexao,$queryaux);
 
-$query = "DELETE FROM enfermeiro WHERE idenfermeiro = '$teste'";
+$query = "DELETE FROM medico WHERE idmedico = '$teste'";
 
 mysqli_query($conexao,$query);
 
 if(mysqli_affected_rows($conexao) == 1){
 ?>	<script>
-		alert('O cadastro foi efetuado com sucesso!');
-		location.href="enfermeiro.php";
+		alert('A EXCLUSÃO foi realizada com sucesso!');
+		location.href="medicos.php";
 	</script>
 <?php
 
@@ -25,8 +26,8 @@ if(mysqli_affected_rows($conexao) == 1){
 } else {
 ?>
 	<script>
-		alert('Erro, não possível inserir no banco de dados');
-		location.href="enfermeiro.php";
+		alert('Erro, não foi possível excluir!');
+		//location.href="medicos.php";
 	</script>
   <?php  
 }

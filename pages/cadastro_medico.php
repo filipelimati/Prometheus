@@ -45,6 +45,7 @@ if (!$banco)
 $query = "INSERT INTO medico (CPF,CRM,ESPECIAL,NOME,EMAIL,FIXO,CELULAR,DATANASC,SEXO,CEP,LOGRADOURO,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,ESTADO)
 VALUES ('$cpf','$crm','$especialidade','$nome','$email','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado')";
 
+
 mysqli_query($conexao,$query); //Realiza a consulta
 
 
@@ -54,8 +55,7 @@ mysqli_query($conexao,$query); //Realiza a consulta
 if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
 
 	$pegaid = mysqli_insert_id($conexao);
-
-	$query2 = "INSERT INTO usuario USUARIO,SENHA,IDMEDICO) VALUES ('$usuario','$senha','$pegaid')";
+	$query2 = "INSERT INTO usuario (USUARIO,SENHA,IDMEDICO) VALUES ('$usuario','$senha','$pegaid')";
 
 	mysqli_query($conexao,$query2);//verifica se foi afetada alguma linha, nesse caso inserida alguma linha
 	

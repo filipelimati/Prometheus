@@ -26,6 +26,7 @@ $estado     = $_POST ["estado"];
 
 $query = "UPDATE medico SET CPF='$cpf',CRM='$crm',ESPECIAL='$especialidade',NOME='$nome',EMAIL='$email',FIXO='$fixo',CELULAR='$celular',DATANASC='$dataNasc',SEXO='$sexo',CEP='$cep',LOGRADOURO='$logradouro',NUMERO='$endNumero',COMPLEMENTO='$complemento',BAIRRO='$bairro',CIDADE='$cidade',ESTADO='$estado' WHERE IDMEDICO='$idmedico'";
 
+
 mysqli_query($conexao,$query); //Realiza a consulta
  
 if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
@@ -41,7 +42,7 @@ if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha,
 } else {
 ?>
   <script>
-  alert('Erro, não possível inserir no banco de dados');
+  alert('Erro, não alterar o cadastro!');
   location.href="medicos.php";
   </script>
   <?php  

@@ -10,7 +10,7 @@ $query = "select idusuario,usuario from usuario where usuario = '{$usuario}' and
 $result = mysqli_query($conexao,$query);
 $row = mysqli_num_rows($result);
 
-if($row > 0) {
+if($row == 1) {
 	$num=rand(100000,900000);
 	session_start();
 	$_SESSION['numLogin'] = $num;
