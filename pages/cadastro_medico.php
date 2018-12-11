@@ -22,7 +22,7 @@ $estado			= $_POST ["estado"];
 
 $usuario		= $_POST ["usuario"];
 $senha			= md5($_POST ["senha"]);
-$perfil 		= 'Médico';
+
 
 /*
 $login	= $_POST ["login"];	//atribuição do campo "login" vindo do formulário para variavel
@@ -45,15 +45,19 @@ if (!$banco)
 $query = "INSERT INTO medico (CPF,CRM,ESPECIAL,NOME,EMAIL,FIXO,CELULAR,DATANASC,SEXO,CEP,LOGRADOURO,NUMERO,COMPLEMENTO,BAIRRO,CIDADE,ESTADO)
 VALUES ('$cpf','$crm','$especialidade','$nome','$email','$fixo','$celular','$dataNasc','$sexo','$cep','$logradouro','$endNumero','$complemento','$bairro','$cidade','$estado')";
 
-$query2 = "INSERT INTO usuario (NOME,USUARIO,EMAIL,PERFIL,SENHA) VALUES ('$nome','$usuario','$email','$perfil','$senha')";
-
 mysqli_query($conexao,$query); //Realiza a consulta
 
-mysqli_query($conexao,$query2);
+
 
 
  
-if(mysqli_affected_rows($conexao) == 2){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
+if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
+
+	$pegaid = mysqli_insert_id($conexao);
+
+	$query2 = "INSERT INTO usuario USUARIO,SENHA,IDMEDICO) VALUES ('$usuario','$senha','$pegaid')";
+
+	mysqli_query($conexao,$query2);//verifica se foi afetada alguma linha, nesse caso inserida alguma linha
 	
 ?>	<script>
 	alert('O cadastro foi efetuado com sucesso!');
