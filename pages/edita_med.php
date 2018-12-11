@@ -1,5 +1,6 @@
 <?php 
 session_start();
+
 include('conexao.php');
 // RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !
 
@@ -41,7 +42,7 @@ if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha,
 ?>
   <script>
   alert('Erro, não possível inserir no banco de dados');
-  //location.href="medicos.php";
+  location.href="medicos.php";
   </script>
   <?php  
 }

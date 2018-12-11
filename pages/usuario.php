@@ -172,10 +172,7 @@
 
           <!-- Page Content -->
           <div id="page-wrapper">
-            <div class="container-fluid">
-
-              <br>
-              <br>
+              <br/>
 
               <div class="row">
                 <div class="col-lg-12">
@@ -187,12 +184,14 @@
                     <!-- /.panel-heading -->
                     <div class="panel-body">
 
+                      <!--
                       <ul class="nav nav-tabs">
                         <li class="active"><a href="#Cadastrar" data-toggle="tab">Cadastrar</a>
                         </li>
                         <li><a href="#Consultar" data-toggle="tab">Consultar</a>
                         </li>
                       </ul>
+                      -->
 
                       <br>
 
@@ -201,12 +200,12 @@
                           <div class="row">
                             <form role="form" id="formUser" action="cadastro_usuario.php" method="post" onsubmit="return compararSenha();">                                                                    
 
-                              <div class="form-group col-sm-7">
+                              <div class="form-group col-sm-6">
                                 <label>Nome</label>
                                 <input name="nome" type="text" class="form-control" placeholder="Nome Completo" required autofocus>
                               </div>
 
-                              <div class="form-group col-sm-5">
+                              <div class="form-group col-sm-6">
                                 <label>Usuário</label>
                                 <input name="usuario" type="text" class="form-control" placeholder="Usuário" required="required">
                               </div>
@@ -218,10 +217,7 @@
 
                               <div class="form-group col-sm-6">
                                 <label>Perfil</label>
-                                <select name="perfil" class="form-control mr-sm-2" required="required">
-                                  <option>Médico</option>
-                                  <option>Enfermeiro</option>
-                                  <option>Téc. Enfermagem</option>
+                                <select name="perfil" class="form-control mr-sm-2" required="required">                                  
                                   <option>Administrador</option>                                        
                                 </select>
                               </div>                                    

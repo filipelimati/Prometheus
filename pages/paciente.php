@@ -301,10 +301,7 @@ if($_SESSION['numLogin'] == 0 or null){
 
       <!-- Page Content -->
       <div id="page-wrapper">
-        <div class="container-fluid">
-
-          <br>
-          <br>
+          <br/>
 
           <div class="row">
             <div class="col-lg-12">
@@ -338,18 +335,18 @@ if($_SESSION['numLogin'] == 0 or null){
                             <input name="email" type="text" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>
                           </div>
 
-                          <div class="form-group col-sm-4">
+                          <div class="form-group col-sm-2">
                             <label>CPF</label>
                             <input name="cpf" type="text" class="form-control" placeholder="Digite o CPF" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" required>
                           </div>
 
-                          <div class="form-group col-sm-4">
-                            <label>Telefone Residencial</label>
+                          <div class="form-group col-sm-2">
+                            <label>Residencial</label>
                             <input name="fixo" type="tel" class="form-control" placeholder="Digite seu telefone" id="telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );">
                           </div>
 
-                          <div class="form-group col-sm-4">
-                            <label>Telefone Celular</label>
+                          <div class="form-group col-sm-2">
+                            <label>Celular</label>
                             <input name="celular" type="tel" class="form-control" placeholder="Digite seu celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );">
                           </div>
 

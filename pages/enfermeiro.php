@@ -304,7 +304,7 @@
           </nav>
           <!-- Page Content -->
           <div id="page-wrapper">
-            <div class="container-fluid">
+            <br/>            
 
               <div class="row">
                 <div class="col-lg-12">
@@ -336,7 +336,7 @@
                               -->
                               <div class="form-group col-md-2">
                                 <label>COREN</label>
-                                <input name="coren" type="text" class="form-control" placeholder="Informe o número do COREN" required autofocus>
+                                <input name="coren" type="text" class="form-control" placeholder="Informe o COREN" required autofocus>
                               </div>
                               <!--
                               <div class="form-group col-sm-5">
@@ -354,25 +354,25 @@
                                 <input name="senhaConfirm" id="senhaConfirm" type="password" class="form-control" placeholder="Confirmar Senha" pattern=".{8,}" title="No mínimo 8 caracteres">
                               </div>                          
                               -->
-                              <div class="form-group col-md-9">
+                              <div class="form-group col-md-5">
                                 <label>Nome</label>
                                 <input name="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$" required>
                               </div>
 
-                              <div class="form-group col-sm-6">
+                              <div class="form-group col-sm-5">
                                <label>E-mail</label>
                                <input name="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                              </div>
                              
-                             <div class="form-group col-sm-2">
+                             <div class="form-group col-sm-3">
                               <label>Telefone Fixo</label>
                               <input name="fixo" type="phone" class="form-control" placeholder="Digite seu telefone" id="telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );">
                               <!--pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
                             </div>
 
-                            <div class="form-group col-sm-2">
+                            <div class="form-group col-sm-3">
                               <label>Telefone Móvel</label>
-                              <input name="celular" type="phone" class="form-control" placeholder="Digite seu número de celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );">
+                              <input name="celular" type="phone" class="form-control" placeholder="Digite seu celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );">
                               <!-- pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
                             </div>
 
@@ -393,6 +393,31 @@
                             <div class="form-group col-sm-2">
                               <label>CEP</label>
                               <input name="cep" id="cep" type="text" class="form-control" placeholder="Informe o CEP" id="cep" onblur="pesquisacep(this.value);" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" required>
+                            </div>                            
+
+                            <div class="form-group col-sm-8">
+                              <label>Logradouro</label>
+                              <input name="logradouro" id="rua" type="text" placeholder="Infome o endereço" class="form-control" required>
+                            </div>
+
+                            <div class="form-group col-sm-2">
+                              <label>Número</label>
+                              <input name="endNumero" id="endNumero" type="number" placeholder="Nº 1234" class="form-control" required>
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                              <label>Complemento</label>
+                              <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control" required>
+                            </div>
+
+                            <div class="form-group col-sm-4">
+                              <label>Bairro</label>
+                              <input name="bairro" id="bairro" type="text" placeholder="Informe o bairro" class="form-control" required>
+                            </div>
+
+                            <div class="form-group col-sm-3">
+                              <label>Cidade</label>
+                              <input name="cidade" id="cidade" type="text" placeholder="Informe a cidade" class="form-control" required>
                             </div>
 
                             <div class="form-group col-sm-1">
@@ -429,34 +454,6 @@
                               </select>
                             </div>
 
-                            <div class="form-group col-sm-8">
-                              <label>Logradouro</label>
-                              <input name="logradouro" id="rua" type="text" placeholder="Infome o endereço" class="form-control" required>
-                            </div>
-
-                            <div class="form-group col-sm-2">
-                              <label>Número</label>
-                              <input name="endNumero" id="endNumero" type="number" placeholder="Nº 1234" class="form-control" required>
-                            </div>
-
-                            <div class="form-group col-sm-4">
-                              <label>Complemento</label>
-                              <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control" required>
-                            </div>
-
-                            <div class="form-group col-sm-4">
-                              <label>Bairro</label>
-                              <input name="bairro" id="bairro" type="text" placeholder="Informe o bairro" class="form-control" required>
-                            </div>
-
-                            <div class="form-group col-sm-3">
-                              <label>Cidade</label>
-                              <input name="cidade" id="cidade" type="text" placeholder="Informe a cidade" class="form-control" required>
-                            </div>
-
-
-
-
                             <div class="form-group col-sm-12">
                               <hr></hr>
                             </div>
@@ -477,10 +474,6 @@
                               <label>Confirmar Senha</label>
                               <input name="senhaConfirm" id="senhaConfirm" type="password" class="form-control" placeholder="Confirmar Senha" pattern=".{8,}" title="No mínimo 8 caracteres">
 
-                            </div>
-
-                            <div class="form-group col-sm-12">
-                              <hr></hr>
                             </div>
 
                             <div class="col-md-7">
@@ -507,8 +500,9 @@
                               <div class="panel-heading">
                                 Consulta de Cadastros:
                               </div>
-                              <div class="panel-body">                                
-                                <table width="100%" class="table table-striped table-bordered table-hover" id="tenf"> 
+                              <div class="panel-body">
+                                <div class="table-responsive">                                
+                                  <table width="100%" class="table table-striped table-bordered table-hover" id="tenf"> 
                                   <thead>
                                     <tr>
                                       <th>
@@ -740,7 +734,8 @@
                                     } 
                                     ?>
                                   </tbody>
-                                </table>
+                                  </table>
+                                <div class="table-responsive">
                               </div>
                             </div>
                           </div>
@@ -753,7 +748,7 @@
                   <!-- /#page-wrapper -->
                 </div>
               </div>
-            </div>
+            
           </div>
         </div>
       

@@ -63,208 +63,155 @@
 
 </head>
 
-    <body>
-      
+  <body>
+    
 
-      <div id="wrapper">
+    <div id="wrapper">
 
-        <nav class="navbar navbar-default navbar-static-top"  style="margin-bottom: 0">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+      <nav class="navbar navbar-default navbar-static-top"  style="margin-bottom: 0">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
 
-                <a href="#" class="navbar-left">
-                    <img src="../img/logo2.png" width="40" height="40" alt=""></img> 
-                </a>
+              <a href="#" class="navbar-left">
+                  <img src="../img/logo2.png" width="40" height="40" alt=""></img> 
+              </a>
 
-                <a class="navbar-brand" href="home.php">                                                           
-                    PROMETHEUS
-                </a>
-            </div>
-            <!-- /.navbar-header -->
-            <ul class="nav navbar-top-links navbar-right">
+              <a class="navbar-brand" href="home.php">                                                           
+                  PROMETHEUS
+              </a>
+          </div>
+          <!-- /.navbar-header -->
+          <ul class="nav navbar-top-links navbar-right">
 
-                <!-- /.dropdown -->
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <?php echo "Olá, ".$_SESSION['userName'];?> <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li>
-                            <a href="sair.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-              <div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                                </span>
-                            </div>
-                            
-                        </li>
-
-
-                        <li>
-                            <a href="home.php"> <i class="fa fa-home fa-fw"></i> <b>Home</b></a>                            
-                        </li>
-                        <li>
-                            <a href="consulta.php"><i class="fa fa-user-md fa-fw"></i> <b>Consultas</b></a>
-                        </li>
-                        <li>
-                            <a href="triagem.php"><i class="fa fa-stethoscope fa-fw"></i> <b>Triagens</b></a>
-                        </li>
-                        <li>
-                            <a href="prontuario.php"><i class="fa fa-clipboard fa-fw"></i> <b>Prontuários</b></a>                            
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-plus-circle fa-fw"></i> <b>Cadastros</b><span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="paciente.php">Paciente</a>
-                                </li>
-                                <li>
-                                    <a href="medicos.php">Médico</a>
-                                </li>
-                                <li>
-                                    <a href="enfermeiro.php">Enfermeiro</a>
-                                </li>
-                                <li>
-                                    <a href="tecnico.php">Técnico de Enfermagem</a>
-                                </li>                                
-                                <li>
-                                    <a href="maqueiro.php">Maqueiro</a>
-                                </li>
-                                <li>
-                                    <a href="medicamento.php">Medicamento</a>                            
-                                </li>
-                                <li>
-                                    <a href="usuario.php">Usuário</a>                            
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>                        
-                        
-                        <li>
-                            <a href="#"><i class="fa fa-book fa-fw"></i> <b>Sobre</b></a>
-
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- /.sidebar-collapse -->
-            </div>
-            <!-- /.navbar-static-side -->
-        </nav>
-
-          <!-- Page Content -->
-          <div id="page-wrapper">
-            <div class="container-fluid">
-
-              <br>
-              <br>
-
-              <div class="row">
-                <div class="col-lg-12">
-                  <div class="panel panel-primary">
-
-                    <div class="panel-heading">
-                      <b>CONSULTA</b>
-                    </div>
-                    <!-- /.panel-heading -->
-                    <div class="panel-body">                    
-
+              <!-- /.dropdown -->
+              <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                      <?php echo "Olá, ".$_SESSION['userName'];?> <i class="fa fa-caret-down"></i>
+                  </a>
+                  <ul class="dropdown-menu dropdown-user">
+                      <li>
+                          <a href="sair.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                      </li>
+                  </ul>
+              </li>
+          </ul>
+            <div class="navbar-default sidebar" role="navigation">
+              <div class="sidebar-nav navbar-collapse">
+                  <ul class="nav" id="side-menu">
                       
-                      <div class="tab-content">
-                        <div class="tab-pane fade in active" id="Cadastrar">                                  
-                          <div class="row">
-                            <form role="form" action="cadastro_usuario.php" method="post">                                                                    
+                      <li class="sidebar-search">
+                          <div class="input-group custom-search-form">
+                              <input type="text" class="form-control" placeholder="Search...">
+                              <span class="input-group-btn">
+                              <button class="btn btn-default" type="button">
+                                  <i class="fa fa-search"></i>
+                              </button>
+                              </span>
+                          </div>
+                          
+                      </li>
 
-                              <div class="form-group col-sm-7">
-                                <label>Nome</label>
-                                <input name="nome" type="text" class="form-control" placeholder="Nome Completo" required autofocus>
-                              </div>
 
-                              <div class="form-group col-sm-5">
-                                <label>Usuário</label>
-                                <input name="usuario" type="text" class="form-control" placeholder="Usuário" required="required">
-                              </div>
+                      <li>
+                          <a href="home.php"> <i class="fa fa-home fa-fw"></i> <b>Home</b></a>                            
+                      </li>
+                      <li>
+                          <a href="consulta.php"><i class="fa fa-user-md fa-fw"></i> <b>Consultas</b></a>
+                      </li>
+                      <li>
+                          <a href="triagem.php"><i class="fa fa-stethoscope fa-fw"></i> <b>Triagens</b></a>
+                      </li>
+                      <li>
+                          <a href="prontuario.php"><i class="fa fa-clipboard fa-fw"></i> <b>Prontuários</b></a>                            
+                      </li>
+                      <li>
+                          <a href="#"><i class="fa fa-plus-circle fa-fw"></i> <b>Cadastros</b><span class="fa arrow"></span></a>
+                          <ul class="nav nav-second-level">
+                              <li>
+                                  <a href="paciente.php">Paciente</a>
+                              </li>
+                              <li>
+                                  <a href="medicos.php">Médico</a>
+                              </li>
+                              <li>
+                                  <a href="enfermeiro.php">Enfermeiro</a>
+                              </li>
+                              <li>
+                                  <a href="tecnico.php">Técnico de Enfermagem</a>
+                              </li>                                
+                              <li>
+                                  <a href="maqueiro.php">Maqueiro</a>
+                              </li>
+                              <li>
+                                  <a href="medicamento.php">Medicamento</a>                            
+                              </li>
+                              <li>
+                                  <a href="usuario.php">Usuário</a>                            
+                              </li>
+                          </ul>
+                          <!-- /.nav-second-level -->
+                      </li>                        
+                      
+                      <li>
+                          <a href="#"><i class="fa fa-book fa-fw"></i> <b>Sobre</b></a>
 
-                              <div class="form-group col-sm-6">
-                                <label>E-mail</label>
-                                <input name="email" type="email" class="form-control" placeholder="E-mail" required="required">
-                              </div>
+                      </li>
 
-                              <div class="form-group col-sm-6">
-                                <label>Perfil</label>
-                                <select name="perfil" class="form-control mr-sm-2" required="required">
-                                  <option>Médico</option>
-                                  <option>Enfermeiro</option>
-                                  <option>Téc. Enfermagem</option>
-                                  <option>Administrador</option>                                        
-                                </select>
-                              </div>                                    
+                  </ul>
+              </div>
+              <!-- /.sidebar-collapse -->
+          </div>
+          <!-- /.navbar-static-side -->
+      </nav>
 
-                              <div class="form-group col-sm-6" required="required">
-                                <label>Senha</label>
-                                <input name="senha" id="senha" type="password" class="form-control" onchange="compararSenha;" placeholder="Senha" pattern=".{8,}" title="No mínimo 8 caracteres">
-                              </div>
+        <!-- Page Content -->
+        <div id="page-wrapper">            
+          <br>
+          <div class="col-lg-12">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="panel panel-primary">
 
-                              <div class="form-group col-sm-6" required="required">
-                                <label>Confirmar Senha</label>
-                                <input name="senhaConfirm" id="senhaConfirm" type="password" class="form-control"  onkeyup="compararSenha;" placeholder="Confirmar Senha" pattern=".{8,}" title="No mínimo 8 caracteres">
-                              </div>
+                  <div class="panel-heading">
+                    <b>CONSULTA</b>
+                  </div>
+                  <!-- /.panel-heading -->
+                  <div class="panel-body">                    
 
-                              <div class="col-md-9">
-                                <!--alinhamento dos Botões-->
-                              </div>
+                    
+                    <div class="tab-content">
 
-                              <div class="col-md-3 col-sm-12 col-xs-12">
-                                <button type="submit" class="btn btn-primary btn-block">SALVAR</button>
-                              </div> 
-                            </form>
-                          </div>                                                                  
-                        </div>                                               
-
-                      </div>
                     </div>
                   </div>
                 </div>
-                <!-- /.col-lg-12 -->
               </div>
-              <!-- /.row -->
+              <!-- /.col-lg-12 -->
             </div>
-            <!-- /.container-fluid -->
           </div>
-          <!-- /#page-wrapper -->
-
+          <!-- /.row -->            
         </div>
-        <!-- /#wrapper -->
+        <!-- /#page-wrapper -->
 
-        <!-- jQuery -->
-        <script src="../vendor/jquery/jquery.min.js"></script>
+    </div>
+    <!-- /#wrapper -->
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
 
-        <!-- Metis Menu Plugin JavaScript -->
-        <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-        <!-- Custom Theme JavaScript -->
-        <script src="../dist/js/sb-admin-2.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
-      </body>
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
 
-      </html>
+  </body>
+    
+</html>

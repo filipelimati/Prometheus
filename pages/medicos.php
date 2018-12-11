@@ -309,11 +309,8 @@ if($_SESSION['numLogin'] == 0 or null){
       </nav>
 
       <!-- Page Content -->
-      <div id="page-wrapper">
-        <div class="container-fluid">
-
-          <br>
-          <br>
+      <div id="page-wrapper">        
+          <br>       
 
           <div class="row">
             <div class="col-lg-12">
@@ -473,6 +470,7 @@ if($_SESSION['numLogin'] == 0 or null){
                             Consulta de Cadastros:
                           </div>
                           <div class="panel-body">
+                            <div class="table-responsive">
                             <table width="100%" class="table table-striped table-bordered table-hover" id="tmed" style="width:100%" > 
                               <thead>
                                 <tr>
@@ -510,8 +508,33 @@ if($_SESSION['numLogin'] == 0 or null){
                                         <td ><?php printf($obj->nome) ?></td>
                                         <td ><?php printf($obj->especial) ?></td>
                                         <td ><?php printf($obj->email) ?></td>
-                                        <td>
-                                        
+
+                                        <!-- Modal Excluir --> 
+                                          <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+                                            <div class="modal-dialog" role="document" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                                                  <h5 class="modal-title" id="modalLabel">Excluir Médico</h5>
+                                                </div>
+                                                <form role="form" action="exclui_medico.php" method="post">
+                                                  <div class="modal-body">
+                                                    Deseja realmente excluir <?php echo $obj->nome ?>?
+                                                  </div>
+
+                                                  <input name="teste" type="hidden" class="form-control" id="idenf" value="">
+
+                                                  <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Sim</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">N&atilde;o</button>
+                                                  </div>
+                                                </form>
+                                              </div>  
+                                            </div>
+                                          </div> 
+                                          <!-- Fim Modal Excluir -->
+
+                                        <td>                                        
                                           <button type="button" 
                                             class="btn btn-xs btn-warning" 
                                             data-toggle="modal" 
@@ -646,16 +669,16 @@ if($_SESSION['numLogin'] == 0 or null){
                                                         <hr></hr>
                                                       </div>
 
-                                                      <div class="col-md-7">
+                                                      <div class="col-md-6">
                                                         <!--alinhamento dos Botões-->
                                                       </div>                                    
 
-                                                      <div class="col-md-2 col-sm-12 col-xs-6">
-                                                        <button type="reset" class="btn btn-warning btn-block">LIMPAR</button>
+                                                      <div class="col-md-3 col-sm-3 col-xs-6">
+                                                        <button type="reset" class="btn btn-danger btn-block">LIMPAR</button>
                                                       </div>
 
-                                                      <div class="col-md-3 col-sm-12 col-xs-6">
-                                                        <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
+                                                      <div class="col-md-3 col-sm-3 col-xs-6">
+                                                        <button type="submit" class="btn btn-success btn-block">ALTERAR</button>
                                                       </div>
                                                                                                     
                                                     </form>
@@ -673,6 +696,7 @@ if($_SESSION['numLogin'] == 0 or null){
                                 ?>
                               </tbody>
                             </table>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -686,7 +710,7 @@ if($_SESSION['numLogin'] == 0 or null){
             </div>
           </div>
           <!-- /.col-lg-12 -->
-        </div>
+        
         <!-- /.row -->
       </div>
       <!-- /.container-fluid -->
