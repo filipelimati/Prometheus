@@ -97,7 +97,7 @@ if($_SESSION['numLogin'] == 0 or null){
       }
 
       $(document).ready(function() {
-        $('#maqueiro').DataTable({
+        $('#maqueiro1').DataTable({
           "language": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -219,7 +219,7 @@ if($_SESSION['numLogin'] == 0 or null){
           */
         } 
     </script>
-  </head>
+    </head>
 
   <body>
     <div id="wrapper">

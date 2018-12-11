@@ -546,7 +546,7 @@ if($_SESSION['numLogin'] == 0 or null){
                                                 </div>
                                                 <form role="form" action="exclui_medico.php" method="post">
                                                   <div class="modal-body">
-                                                    Deseja realmente excluir <?php echo $obj->nome ?>?
+                                                    Deseja realmente excluir?
                                                   </div>
 
                                                   <input name="teste" type="hidden" class="form-control" id="idmedico" value="">

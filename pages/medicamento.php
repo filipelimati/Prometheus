@@ -24,11 +24,22 @@
 
     <title>Prometheus</title>
 
+    <!-- DataTables JavaScript -->
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>      
+
     <!-- Bootstrap Core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
@@ -36,12 +47,17 @@
     <!-- Custom Fonts -->
     <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-      <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-          <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-        <![endif]-->
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>  
+
+    <!--DATATABLE-->
+    <script type="text/javascript">
+      $(document).ready(function() {
+      $('#tmed1').DataTable();
+      } );
+    </script>
+
+    
 
   </head>
 
@@ -250,16 +266,16 @@
                                   <thead>
                                     <tr>
                                       <th>
-                                        <b>CRM</b>
-                                      </th>
-                                      <th>
                                         <b>NOME</b>
                                       </th>
                                       <th>
-                                        <b>ESPECIALIDADE</b>
+                                        <b>LABORATÓRIO</b>
                                       </th>
                                       <th>
-                                        <b>EMAIL</b>
+                                        <b>TARJA</b>
+                                      </th>
+                                      <th>
+                                        <b>QUANTIDADE</b>
                                       </th>
                                       <th>
                                         <b>AÇÕES</b>
@@ -272,7 +288,7 @@
 
                                       include_once("conexao.php");
 
-                                      $sql = "SELECT nome,laboratorio,descricao,princ_ativo,quantidade,tarja,uso_cont FROM medicamento";
+                                      $sql = "SELECT idmedicamento,nome,laboratorio,descricao,princ_ativo,quantidade,tarja,uso_cont FROM medicamento ORDER BY nome";
 
                                       $consulta = mysqli_query($conexao,$sql); 
                                       if ($resultado = $consulta){
@@ -283,42 +299,33 @@
                                             <td ><?php printf($obj->laboratorio) ?></td>
                                             <td ><?php printf($obj->tarja) ?></td>
                                             <td ><?php printf($obj->quantidade) ?></td>
-                                            <td>
-                                            
+                                            <td>                                            
                                               <button type="button" 
                                                 class="btn btn-xs btn-warning" 
                                                 data-toggle="modal" 
-                                                data-target="#exampleModal"
-                                                data-whateveridmedico="<?php echo $obj->idmedico; ?>"
-                                                data-whatevercpf="<?php echo $obj->cpf; ?>" 
-                                                data-whatevercrm="<?php echo $obj->crm; ?>" 
-                                                data-whateverespecial="<?php echo $obj->especial; ?>" 
+                                                data-target="#modalmedica"
+                                                data-whateveridmedicamento="<?php echo $obj->idmedicamento; ?>"
                                                 data-whatevernome="<?php echo $obj->nome; ?>" 
-                                                data-whateveremail="<?php echo $obj->email; ?>" 
-                                                data-whateverfixo="<?php echo $obj->fixo; ?>" 
-                                                data-whatevercelular="<?php echo $obj->celular; ?>" 
-                                                data-whateverdataNasc="<?php echo $obj->datanasc; ?>" 
-                                                data-whateversexo="<?php echo $obj->sexo; ?>" 
-                                                data-whatevercep="<?php echo $obj->cep; ?>"   
-                                                data-whateverlogradouro="<?php echo $obj->logradouro; ?>" 
-                                                data-whatevernumero="<?php echo $obj->numero; ?>" 
-                                                data-whatevercomplemento="<?php echo $obj->complemento; ?>" 
-                                                data-whateverbairro="<?php echo $obj->bairro; ?>" 
-                                                data-whatevercidade="<?php echo $obj->cidade; ?>" 
-                                                data-whateverestado="<?php echo $obj->estado; ?>">
+                                                data-whateverlaboratorio="<?php echo $obj->laboratorio; ?>" 
+                                                data-whateverdescricao="<?php echo $obj->descricao; ?>" 
+                                                data-whateverprinc_ativo="<?php echo $obj->princ_ativo; ?>" 
+                                                data-whateverquantidade="<?php echo $obj->quantidade; ?>" 
+                                                data-whatevertarja="<?php echo $obj->tarja; ?>" 
+                                                data-whateveruso_cont="<?php echo $obj->uso_cont; ?>">
                                                 Editar
                                               </button>
 
                                               <button type="button" class="btn btn-xs btn-danger">Apagar</button>
                                               
                                               <!-- Modal -->
-                                              <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                              <div class="modal fade bd-example-modal-lg" id="modalmedica" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 
-                                                <div class="modal-dialog modal-lg" role="document">
+                                                <div class="modal-dialog modal-lg">
                                                   
                                                   <div class="modal-content">                                                  
                                                     <div class="modal-header">
-                                                      <h5 class="modal-title" id="exampleModalLabel">Editar Médico</h5>
+                                                      <h5 class="modal-title" id="exampleModalLabel">Editar Medicamento</h5>
+
                                                       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                       </button>
@@ -326,98 +333,55 @@
                                                     
                                                     <div class="modal-body">
                                                       <div class="row">
-                                                        <form role="form" action="edita_med.php" method="post">
+                                                        <form role="form" action="edita_medica.php" method="post">
 
-                                                          <input name="idmedico" type="hidden" class="form-control" id="idmedico" value="">
+                                                          <input name="idmedicamento" type="hidden" class="form-control" id="idmedicamento" value="">
 
-                                                          <div class="form-group col-sm-3">
-                                                            <label>CPF</label>
-                                                            <input name="cpf" type="text" id="cpf" class="form-control" placeholder="Digite o CPF" onkeydown="javascript: fMasc( this, mCPF );" onblur="javascrip: TestaCPF(cpf);" maxlength="14" required>
-                                                          </div>
-                                                          
-                                                          <div class="form-group col-md-2">
-                                                            <label>CRM</label>
-                                                            <input name="crm" type="text" id="crm" class="form-control" placeholder="Informe o CRM" required autofocus>
-                                                          </div>
-
-                                                          <div class="form-group col-md-7">
-                                                            <label>Especialidade</label>
-                                                            <input name="especial" id="especial" type="text" class="form-control" placeholder="Informe a especialidade" required autofocus>
-                                                          </div>
-                                                          
-                                                          <div class="form-group col-md-6">
-                                                              <label>Nome</label>
-                                                              <input name="nome" id="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$" required>
-                                                          </div>                            
 
                                                           <div class="form-group col-sm-6">
-                                                             <label>E-mail</label>
-                                                             <input name="email" id="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                                                          </div>                            
-
-                                                          <div class="form-group col-sm-3">
-                                                            <label>Telefone Residencial</label>
-                                                            <input name="fixo" type="phone" class="form-control" placeholder="Informe o telefone" id="fixo" maxlength="13" onkeydown="javascript: fMasc( this, mTel );">
-                                                          </div>
-
-                                                          <div class="form-group col-sm-3">
-                                                            <label>Telefone Celular</label>
-                                                            <input name="celular" type="phone" class="form-control" placeholder="Informe o Celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );">
-                                                          </div>
-
-                                                          <div class="form-group col-sm-3">
-                                                            <label>Data de Nascimento</label>
-                                                            <input name="dataNasc" type="date" class="form-control" placeholder="dd/mm/aaaa" id="data" required>
-                                                          </div>                            
-
-                                                          <div class="form-group col-sm-3">
-                                                            <label>Sexo</label>
-                                                            <select name="sexo" id="sexo" class="form-control mr-sm-2" required>
-                                                              <option>Selecione</option>
-                                                              <option>Masculino</option>
-                                                              <option>Feminino</option>
-                                                            </select>
-                                                          </div>
-
-                                                          <div class="form-group col-sm-2">
-                                                            <label>CEP</label>
-                                                            <input name="cep" id="cep" type="text" class="form-control" placeholder="Informe o CEP" id="cep" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" onblur="pesquisacep(this.value);" required>
-                                                          </div>
-
-                                                          <div class="form-group col-sm-8">
-                                                            <label>Logradouro</label>
-                                                            <input name="logradouro" id="rua" type="text" placeholder="Infome o endereço" class="form-control" required>
-                                                          </div>
-
-                                                          <div class="form-group col-sm-2">
-                                                            <label>Número</label>
-                                                            <input name="endNumero" id="numero" type="number" placeholder="Nº 1234" class="form-control" required>
+                                                            <label>Nome</label>
+                                                            <input name="nome" id="nome" type="text" class="form-control" placeholder="Nome do Medicamento" pattern="[a-zA-Z\s]+$" required>
                                                           </div>
 
                                                           <div class="form-group col-sm-6">
-                                                            <label>Complemento</label>
-                                                            <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control" required>
-                                                          </div>
-
-                                                          <div class="form-group col-sm-3">
-                                                            <label>Bairro</label>
-                                                            <input name="bairro" id="bairro" type="text" placeholder="Informe o bairro" class="form-control" required>
-                                                          </div>
-
-                                                          <div class="form-group col-sm-2">
-                                                            <label>Cidade</label>
-                                                            <input name="cidade" id="cidade" type="text" placeholder="Informe a cidade" class="form-control" required>
-                                                          </div>                            
-
-                                                          <div class="form-group col-sm-1">
-                                                            <label>UF</label>
-                                                            <input type="text" name="estado" id="estado" class="form-control mr-sm-2" required>                                
+                                                            <label>Laboratório</label>
+                                                            <input name="laboratorio" id="laboratorio" type="text" class="form-control" placeholder="Laboratório" required>
                                                           </div>
 
                                                           <div class="form-group col-sm-12">
-                                                            <hr></hr>
+                                                            <label>Descrição</label>
+                                                            <textarea name="descricao" id="descricao" class="form-control" rows="3"></textarea>
                                                           </div>
 
+                                                          <div class="form-group col-sm-6">
+                                                            <label>Princípio Ativo</label>
+                                                            <input name="principioAtivo" id="princ_ativo" type="text" class="form-control" placeholder="Princípio atívo da medicação" required>
+                                                          </div>                            
+
+                                                          <div class="form-group col-sm-6">
+                                                            <label>Quantidade</label><br>
+                                                            <input name="qtd" id="qtd" type="number" class="form-control" placeholder="Quantidade" required>
+                                                          </div>
+
+                                                          <div class="form-group col-sm-6">
+                                                            <label>Tarja</label>
+                                                            <select name="tarja" id="tarja" class="form-control mr-sm-2" required>
+                                                              <option>Vermelha (Com retenção da Receita)</option>
+                                                              <option>Vermelha (Sem retenção da Receita)</option>
+                                                              <option>Preta</option>
+                                                              <option>Amarela</option>
+                                                              <option>Sem Tarja</option>
+                                                            </select>
+                                                          </div>
+
+                                                          <div class="form-group col-sm-6">
+                                                            <label>Uso Contínuo</label>
+                                                            <select name="uso" id="uso_cont" class="form-control mr-sm-6" required>
+                                                              <option>Sim</option>
+                                                              <option>Não</option>
+                                                            </select>
+                                                          </div>
+                                                          
                                                           <div class="col-md-7">
                                                             <!--alinhamento dos Botões-->
                                                           </div>                                    
@@ -427,20 +391,21 @@
                                                           </div>
 
                                                           <div class="col-md-3 col-sm-12 col-xs-6">
-                                                            <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
-                                                          </div>                                              
+                                                            <button type="submit" class="btn btn-primary btn-block">ALTERAR</button>
+                                                          </div>   
                                                         </form>
                                                       </div>                                                  
                                                     </div>
+                                                    <!--modal body-->
                                                   </div>
                                                 </div>
                                               </div>
                                             </td>    
                                           </tr>
                                     <?php
-                                          }
-                                          $resultado->close();
-                                          } 
+                                      }
+                                      $resultado->close();
+                                      } 
                                     ?>
                                   </tbody>
                                 </table>
@@ -465,16 +430,65 @@
           <!-- /#page-wrapper -->
 
           <!-- jQuery -->
-          <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
 
-          <!-- Bootstrap Core JavaScript -->
-          <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
 
-          <!-- Metis Menu Plugin JavaScript -->
-          <script src="../vendor/metisMenu/metisMenu.min.js"></script>
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="../vendor/metisMenu/metisMenu.min.js"></script>
 
-          <!-- Custom Theme JavaScript -->
-          <script src="../dist/js/sb-admin-2.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+
+    <script type="text/javascript">
+      $('#modalmedica').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var idmedicamento = button.data('whateveridmedicamento') // Extract info from data-* attributes
+        var nome = button.data('whatevernome')
+        var laboratorio = button.data('whateverlaboratorio')
+        var descricao = button.data('whateverdescricao')
+        var princ_ativo = button.data('whateverprinc_ativo')
+        var quantidade = button.data('whateverquantidade')
+        var tarja = button.data('whatevertarja')
+        var uso_cont = button.data('whateveruso_cont')
+        
+
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('#idmedicamento').val(idmedicamento)
+        modal.find('#nome').val(nome)
+        modal.find('#laboratorio').val(laboratorio)
+        modal.find('#descricao').val(descricao)                
+        modal.find('#princ_ativo').val(ativo)
+        modal.find('#quantidade').val(quantidade)
+        modal.find('#tarja').val(tarja)
+        modal.find('#uso_cont').val(uso_cont)               
+            
+        
+      })
+    </script>
+
+    <script type="text/javascript">
+      $('#myModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var idmedico = button.data('whateveridmedico') // Extract info from data-* attributes
+        var nome = button.data('whatevernome')
+
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        //modal.find('.modal-title').text('ID ' + idenf)
+        modal.find('#idmedico').val(idmedico)
+        modal.find('#nome').val(nome)
+      })
+    </script>
 
         </body>
 

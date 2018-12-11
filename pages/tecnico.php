@@ -102,7 +102,7 @@ if($_SESSION['numLogin'] == 0 or null){
       }
 
       $(document).ready(function() {
-        $('#tecenf').DataTable({
+        $('#tecenf1').DataTable({
           "language": {
             "sEmptyTable": "Nenhum registro encontrado",
             "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
@@ -574,44 +574,44 @@ if($_SESSION['numLogin'] == 0 or null){
                                                 <div class="row">
                                                     <form role="form" action="edita_tec.php" method="post">
 
-                                                      <div class="form-group-sm col-sm-6">
+                                                      <div class="form-group-sm col-sm-2">
                                                         <label>CPF</label>
                                                         <input name="cpf" id="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" value = "" required>
                                                       </div>
                                                       
-                                                      <div class="form-group-sm col-md-6">
+                                                      <div class="form-group-sm col-md-2">
                                                         <label>COREN</label>
-                                                        <input name="coren" type="text" class="form-control" placeholder="Informe o número do COREN" id="coren" required autofocus>
+                                                        <input name="coren" id="coren" type="text" class="form-control" placeholder="Informe o número do COREN"  required autofocus>
                                                       </div>                            
 
-                                                      <div class="form-group-sm col-md-6">
+                                                      <div class="form-group-sm col-md-8">
                                                         <label>Nome</label>
-                                                        <input name="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$" id="nome" required>
+                                                        <input name="nome" id="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$"  required>
                                                       </div>
 
-                                                      <div class="form-group-sm col-sm-6">
+                                                      <div class="form-group-sm col-sm-4">
                                                        <label>E-mail</label>
                                                        <input name="email" id="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
                                                       </div>
                                                      
-                                                      <div class="form-group-sm col-sm-6">
+                                                      <div class="form-group-sm col-sm-2">
                                                       <label>Telefone Fixo</label>
-                                                      <input name="fixo" type="phone" class="form-control" placeholder="Digite seu telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );" id="fixo">
+                                                      <input name="fixo" id="fixo" type="phone" class="form-control" placeholder="Digite seu telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );" id="fixo">
                                                       <!--pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
                                                       </div>
 
-                                                    <div class="form-group-sm col-sm-6">
+                                                    <div class="form-group-sm col-sm-2">
                                                       <label>Telefone Móvel</label>
-                                                      <input name="celular" type="phone" class="form-control" placeholder="Digite seu número de celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );" id="celular">
+                                                      <input name="celular" id="celular" type="phone" class="form-control" placeholder="Digite seu número de celular" maxlength="14"  onkeydown="javascript: fMasc( this, mTel );" id="celular">
                                                       <!-- pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
                                                     </div>
 
-                                                    <div class="form-group-sm col-sm-6">
+                                                    <div class="form-group-sm col-sm-4">
                                                       <label>Data de Nascimento</label>
                                                       <input name="dataNasc" id="datanasc" type="date" class="form-control" placeholder="dd/mm/aaaa" id="data" required>
                                                     </div>                            
 
-                                                    <div class="form-group-sm col-sm-6">
+                                                    <div class="form-group-sm col-sm-2">
                                                       <label>Sexo</label>
                                                       <select class="form-control mr-sm-2" name="sexo"  id="sexo" required>
                                                         <option>Selecione</option>
@@ -626,42 +626,42 @@ if($_SESSION['numLogin'] == 0 or null){
                                                     </div>
                                                   -->
 
-                                                  <div class="form-group-sm col-sm-6">
+                                                  <div class="form-group-sm col-sm-2">
                                                     <label>CEP</label>
-                                                    <input name="cep"  type="text" class="form-control" placeholder="Informe o CEP" id="cep" onblur="pesquisacep(this.value);" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" id="cep" required>
+                                                    <input name="cep" id="cep" type="text" class="form-control" placeholder="Informe o CEP" onblur="pesquisacep(this.value);" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" id="cep" required>
                                                   </div>
 
-                                                  <div class="form-group-sm col-sm-6">
+                                                  <div class="form-group-sm col-sm-8">
                                                     <label>Logradouro</label>
-                                                    <input name="logradouro"  type="text" placeholder="Infome o endereço" class="form-control" id="logradouro"  required>
+                                                    <input name="logradouro" id="logradouro" type="text" placeholder="Infome o endereço" class="form-control"  required>
                                                   </div>
 
-                                                  <div class="form-group-sm col-sm-6">
+                                                  <div class="form-group-sm col-sm-2">
                                                     <label>Número</label>
-                                                    <input name="endNumero" type="number" placeholder="Nº 1234" class="form-control" id="numero"  required>
+                                                    <input name="endNumero" id="numero" type="number" placeholder="Nº 1234" class="form-control" required>
                                                   </div>
 
                                                   <div class="form-group-sm col-sm-6">
                                                     <label>Complemento</label>
-                                                    <input name="complemento"  type="text" placeholder="Complemento" class="form-control" id="complemento"  required>
+                                                    <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control" required>
                                                   </div>
 
                                                   <div class="form-group-sm col-sm-6">
                                                     <label>Bairro</label>
-                                                    <input name="bairro"  type="text" placeholder="Informe o bairro" class="form-control" id="bairro"  required>
+                                                    <input name="bairro" id="bairro"  type="text" placeholder="Informe o bairro" class="form-control" required>
                                                   </div>
 
                                                   <div class="form-group-sm col-sm-6">
                                                     <label>Cidade</label>
-                                                    <input name="cidade" type="text" placeholder="Informe a cidade" class="form-control" id="cidade"  required>
+                                                    <input name="cidade" id="cidade" type="text" placeholder="Informe a cidade" class="form-control" required>
                                                   </div>
 
                                                   <div class="form-group-sm col-sm-6">
                                                     <label>UF</label> 
-                                                    <input name="estado" type="text" class="form-control" id="estado"  required>                                 
+                                                    <input name="estado" id="estado" type="text" class="form-control" required>                                 
                                                   </div>
 
-                                                  <input name="idtecnico" type="hidden" class="form-control" id="idtecnico" value="">
+                                                  <input name="idtecnico" id="idtecnico" type="hidden" class="form-control" value="">
 
                                                   <div class="col-md-7">
                                                     <!--alinhamento dos Botões-->
