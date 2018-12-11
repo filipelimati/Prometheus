@@ -51,6 +51,8 @@
         <!-- Custom Fonts -->
         <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+
+
         
         <script type="text/javascript">
           function fMasc(objeto,mascara) {
@@ -120,6 +122,7 @@
                   "sSortAscending": ": Ordenar colunas de forma ascendente",
                   "sSortDescending": ": Ordenar colunas de forma descendente"
                 }
+
               }
             });
           } );
@@ -460,7 +463,7 @@
 
                             <div class="form-group col-sm-4">
                               <label>Usuário</label>
-                              <input name="usuario" type="text" class="form-control" placeholder="Usuário" required="required">
+                              <input name="login" type="text" class="form-control" placeholder="Usuário" required="required">
                               
                             </div>
 
@@ -667,38 +670,37 @@
                                                           <label>Cidade</label>
                                                           <input name="cidade" type="text" placeholder="Informe a cidade" class="form-control" id="cidade"  required>
                                                         </div>
-
-                                                        <div class="form-group col-md-6">
+                                                        <div class="form-group col-sm-4">
                                                           <label>UF</label>
-                                                          <select name="estado" class="form-control mr-sm-2" required>
-                                                            <option>Selecione o estado</option>
-                                                            <option value="AC">Acre</option>
-                                                            <option value="AL">Alagoas</option>
-                                                            <option value="AP">Amapá</option>
-                                                            <option value="AM">Amazonas</option>
-                                                            <option value="BA">Bahia</option>
-                                                            <option value="CE">Ceará</option>
-                                                            <option value="DF">Distrito Federal</option>
-                                                            <option value="ES">Espirito Santo</option>
-                                                            <option value="GO">Goiás</option>
-                                                            <option value="MA">Maranhão</option>
-                                                            <option value="MS">Mato Grosso do Sul</option>
-                                                            <option value="MT">Mato Grosso</option>
-                                                            <option value="MG">Minas Gerais</option>
-                                                            <option value="PA">Pará</option>
-                                                            <option value="PB">Paraíba</option>
-                                                            <option value="PR">Paraná</option>
-                                                            <option value="PE">Pernambuco</option>
-                                                            <option value="PI">Piauí</option>
-                                                            <option value="RJ">Rio de Janeiro</option>
-                                                            <option value="RN">Rio Grande do Norte</option>
-                                                            <option value="RS">Rio Grande do Sul</option>
-                                                            <option value="RO">Rondônia</option>
-                                                            <option value="RR">Roraima</option>
-                                                            <option value="SC">Santa Catarina</option>
-                                                            <option value="SP">São Paulo</option>
-                                                            <option value="SE">Sergipe</option>
-                                                            <option value="TO">Tocantins</option>
+                                                          <select name="estado" id="estado" class="form-control mr-sm-2" required>
+                                                            <option></option>
+                                                            <option value="AC">AC</option>
+                                                            <option value="AL">AL</option>
+                                                            <option value="AP">AP</option>
+                                                            <option value="AM">AM</option>
+                                                            <option value="BA">BA</option>
+                                                            <option value="CE">CE</option>
+                                                            <option value="DF">DF</option>
+                                                            <option value="ES">ES</option>
+                                                            <option value="GO">GO</option>
+                                                            <option value="MA">MA</option>
+                                                            <option value="MS">MS</option>
+                                                            <option value="MT">MT</option>
+                                                            <option value="MG">MG</option>
+                                                            <option value="PA">PA</option>
+                                                            <option value="PB">PB</option>
+                                                            <option value="PR">PR</option>
+                                                            <option value="PE">PE</option>
+                                                            <option value="PI">PI</option>
+                                                            <option value="RJ">RJ</option>
+                                                            <option value="RN">RN</option>
+                                                            <option value="RS">RS</option>
+                                                            <option value="RO">RO</option>
+                                                            <option value="RR">RR</option>
+                                                            <option value="SC">SC</option>
+                                                            <option value="SP">SP</option>
+                                                            <option value="SE">SE</option>
+                                                            <option value="TO">TO</option>
                                                           </select>
                                                         </div>  
 
@@ -716,7 +718,7 @@
                                                         </div>
 
                                                         <div class="col-md-3 col-sm-12 col-xs-6">
-                                                          <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
+                                                          <button type="submit" class="btn btn-primary btn-block">ALTERAR</button>
                                                         </div>   
                                                       </form>
                                                     </div>   
@@ -834,7 +836,6 @@
             //modal.find('.modal-title').text('ID ' + idenf)
             modal.find('#idenf').val(idenf)
             modal.find('#nome2').val(nome)
-            alert(nome);
           })
         </script>
       </body>

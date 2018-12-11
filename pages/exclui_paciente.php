@@ -3,13 +3,9 @@ session_start();
 include('conexao.php');
 // RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !
 
-$teste = $_POST ["teste"];
+$teste = $_POST ["idpaciente"];
 
-$queryaux = "DELETE FROM usuario WHERE idenfermeiro = '$teste'";
-
-mysqli_query($conexao,$queryaux);
-
-$query = "DELETE FROM enfermeiro WHERE idenfermeiro = '$teste'";
+$query = "DELETE FROM paciente WHERE idpaciente = '$teste'";
 
 mysqli_query($conexao,$query);
 
@@ -26,7 +22,7 @@ if(mysqli_affected_rows($conexao) == 1){
 ?>
 	<script>
 		alert('Erro, não possível inserir no banco de dados');
-		location.href="enfermeiro.php";
+		/location.href="enfermeiro.php";
 	</script>
   <?php  
 }
