@@ -27,31 +27,37 @@ if($_SESSION['numLogin'] == 0 or null){
     <title>Prometheus</title>
 
     <!-- DataTables JavaScript -->
-        <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
-        <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
-        <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="../vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="../vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="../vendor/datatables-responsive/dataTables.responsive.js"></script>      
 
-        <!-- jQuery -->
-        <script src="../vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap Core CSS -->
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Bootstrap Core CSS -->
-        <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- MetisMenu CSS -->
+    <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
 
-        <!-- MetisMenu CSS -->
-        <link href="../vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+    <!-- DataTables CSS -->
+    <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
 
-        <!-- DataTables CSS -->
-        <link href="../vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+    <!-- DataTables Responsive CSS -->
+    <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
 
-        <!-- DataTables Responsive CSS -->
-        <link href="../vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
 
-        <!-- Custom CSS -->
-        <link href="../dist/css/sb-admin-2.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-        <!-- Custom Fonts -->
-        <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- jQuery -->
+    <script src="../vendor/jquery/jquery.min.js"></script>  
 
+    <!--DATATABLE-->
+    <script type="text/javascript">
+      $(document).ready(function() {
+      $('#tmed').DataTable();
+      } );
+    </script>
         
     <!--MASCARAS DOS CAMPOS-->
     <script type="text/javascript">
@@ -96,37 +102,8 @@ if($_SESSION['numLogin'] == 0 or null){
           function mNum(num){
             num=num.replace(/\D/g,"")
             return num
-          }
-
-          $(document).ready(function() {
-            $('#tmed').DataTable({
-              "language": {
-                "sEmptyTable": "Nenhum registro encontrado",
-                "sInfo": "Mostrando de _START_ até _END_ de _TOTAL_ registros",
-                "sInfoEmpty": "Mostrando 0 até 0 de 0 registros",
-                "sInfoFiltered": "(Filtrados de _MAX_ registros)",
-                "sInfoPostFix": "",
-                "sInfoThousands": ".",
-                "sLengthMenu": "_MENU_  resultados por página",
-                "sLoadingRecords": "Carregando...",
-                "sProcessing": "Processando...",
-                "sZeroRecords": "Nenhum registro encontrado",
-                "sSearch": "Pesquisar",
-                "oPaginate": {
-                  "sNext": "Próximo",
-                  "sPrevious": "Anterior",
-                  "sFirst": "Primeiro",
-                  "sLast": "Último"
-                },
-                "oAria": {
-                  "sSortAscending": ": Ordenar colunas de forma ascendente",
-                  "sSortDescending": ": Ordenar colunas de forma descendente"
-                }
-              }
-            });
-          } );
-
-        </script>   
+          }         
+    </script>      
 
     <!-- VALIDAR CEP -->
     <script type="text/javascript" >
@@ -496,7 +473,7 @@ if($_SESSION['numLogin'] == 0 or null){
                             Consulta de Cadastros:
                           </div>
                           <div class="panel-body">
-                            <table width="100%" class="table table-striped table-bordered table-hover" id="tmed"> 
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="tmed" style="width:100%" > 
                               <thead>
                                 <tr>
                                   <th>
@@ -564,7 +541,7 @@ if($_SESSION['numLogin'] == 0 or null){
                                           <!-- Modal -->
                                           <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                             
-                                            <div class="modal-dialog modal-lg" role="document">
+                                            <div class="modal-dialog modal-lg">
                                               
                                               <div class="modal-content">                                                  
                                                 <div class="modal-header">
@@ -576,21 +553,22 @@ if($_SESSION['numLogin'] == 0 or null){
                                                 
                                                 <div class="modal-body">
                                                   <div class="row">
+
                                                     <form role="form" action="edita_med.php" method="post">
 
                                                       <input name="idmedico" type="hidden" class="form-control" id="idmedico" value="">
 
-                                                      <div class="form-group col-sm-3">
+                                                      <div class="form-group col-md-12">
                                                         <label>CPF</label>
                                                         <input name="cpf" type="text" id="cpf" class="form-control" placeholder="Digite o CPF" onkeydown="javascript: fMasc( this, mCPF );" onblur="javascrip: TestaCPF(cpf);" maxlength="14" required>
                                                       </div>
                                                       
-                                                      <div class="form-group col-md-2">
+                                                      <div class="form-group col-md-12">
                                                         <label>CRM</label>
                                                         <input name="crm" type="text" id="crm" class="form-control" placeholder="Informe o CRM" required autofocus>
                                                       </div>
 
-                                                      <div class="form-group col-md-7">
+                                                      <div class="form-group col-md-6">
                                                         <label>Especialidade</label>
                                                         <input name="especial" id="especial" type="text" class="form-control" placeholder="Informe a especialidade" required autofocus>
                                                       </div>
@@ -678,7 +656,8 @@ if($_SESSION['numLogin'] == 0 or null){
 
                                                       <div class="col-md-3 col-sm-12 col-xs-6">
                                                         <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
-                                                      </div>                                              
+                                                      </div>
+                                                                                                    
                                                     </form>
                                                   </div>                                                  
                                                 </div>

@@ -237,173 +237,219 @@
                               <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
                             </div>
                           </form>
-                        </div>                                   
-
-                                                        
+                        </div>
                       </div>
 
-                      <div class="tab-pane fade" id="Consultar">
-                        
+                      <div class="tab-pane fade" id="Consultar">                        
                         <div class="row">
-                          <!--FORMULÁRIO DE BUSCA-->
-                          <form role="form">
-                            <div class="form-group col-sm-12">
-                              <label>Buscar por:</label>                                        
-                            </div>
+                          <div class="col-lg-12">
+                        <div class="panel panel-default">
+                          <div class="panel-heading">
+                            Consulta de Cadastros:
+                          </div>
+                          <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="tmed"> 
+                              <thead>
+                                <tr>
+                                  <th>
+                                    <b>CRM</b>
+                                  </th>
+                                  <th>
+                                    <b>NOME</b>
+                                  </th>
+                                  <th>
+                                    <b>ESPECIALIDADE</b>
+                                  </th>
+                                  <th>
+                                    <b>EMAIL</b>
+                                  </th>
+                                  <th>
+                                    <b>AÇÕES</b>
+                                  </th>                                                    
+                                </tr>
+                              </thead>
+                              <tbody>
+
+                                <?php
+
+                                  include_once("conexao.php");
+
+                                  $sql = "SELECT nome,laboratorio,descricao,princ_ativo,quantidade,tarja,uso_cont FROM medicamento";
+
+                                  $consulta = mysqli_query($conexao,$sql); 
+                                  if ($resultado = $consulta){
+                                    while ($obj = $resultado->fetch_object()){ 
+                                      ?>
+                                      <tr>
+                                        <th ><?php printf($obj->nome) ?></th>
+                                        <td ><?php printf($obj->laboratorio) ?></td>
+                                        <td ><?php printf($obj->tarja) ?></td>
+                                        <td ><?php printf($obj->quantidade) ?></td>
+                                        <td>
+                                        
+                                          <button type="button" 
+                                            class="btn btn-xs btn-warning" 
+                                            data-toggle="modal" 
+                                            data-target="#exampleModal"
+                                            data-whateveridmedico="<?php echo $obj->idmedico; ?>"
+                                            data-whatevercpf="<?php echo $obj->cpf; ?>" 
+                                            data-whatevercrm="<?php echo $obj->crm; ?>" 
+                                            data-whateverespecial="<?php echo $obj->especial; ?>" 
+                                            data-whatevernome="<?php echo $obj->nome; ?>" 
+                                            data-whateveremail="<?php echo $obj->email; ?>" 
+                                            data-whateverfixo="<?php echo $obj->fixo; ?>" 
+                                            data-whatevercelular="<?php echo $obj->celular; ?>" 
+                                            data-whateverdataNasc="<?php echo $obj->datanasc; ?>" 
+                                            data-whateversexo="<?php echo $obj->sexo; ?>" 
+                                            data-whatevercep="<?php echo $obj->cep; ?>"   
+                                            data-whateverlogradouro="<?php echo $obj->logradouro; ?>" 
+                                            data-whatevernumero="<?php echo $obj->numero; ?>" 
+                                            data-whatevercomplemento="<?php echo $obj->complemento; ?>" 
+                                            data-whateverbairro="<?php echo $obj->bairro; ?>" 
+                                            data-whatevercidade="<?php echo $obj->cidade; ?>" 
+                                            data-whateverestado="<?php echo $obj->estado; ?>">
+                                            Editar
+                                          </button>
+
+                                          <button type="button" class="btn btn-xs btn-danger">Apagar</button>
+                                          
+                                          <!-- Modal -->
+                                          <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            
+                                            <div class="modal-dialog modal-lg" role="document">
+                                              
+                                              <div class="modal-content">                                                  
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Editar Médico</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                
+                                                <div class="modal-body">
+                                                  <div class="row">
+                                                    <form role="form" action="edita_med.php" method="post">
+
+                                                      <input name="idmedico" type="hidden" class="form-control" id="idmedico" value="">
+
+                                                      <div class="form-group col-sm-3">
+                                                        <label>CPF</label>
+                                                        <input name="cpf" type="text" id="cpf" class="form-control" placeholder="Digite o CPF" onkeydown="javascript: fMasc( this, mCPF );" onblur="javascrip: TestaCPF(cpf);" maxlength="14" required>
+                                                      </div>
+                                                      
+                                                      <div class="form-group col-md-2">
+                                                        <label>CRM</label>
+                                                        <input name="crm" type="text" id="crm" class="form-control" placeholder="Informe o CRM" required autofocus>
+                                                      </div>
+
+                                                      <div class="form-group col-md-7">
+                                                        <label>Especialidade</label>
+                                                        <input name="especial" id="especial" type="text" class="form-control" placeholder="Informe a especialidade" required autofocus>
+                                                      </div>
+                                                      
+                                                      <div class="form-group col-md-6">
+                                                          <label>Nome</label>
+                                                          <input name="nome" id="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$" required>
+                                                      </div>                            
+
+                                                      <div class="form-group col-sm-6">
+                                                         <label>E-mail</label>
+                                                         <input name="email" id="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                                      </div>                            
+
+                                                      <div class="form-group col-sm-3">
+                                                        <label>Telefone Residencial</label>
+                                                        <input name="fixo" type="phone" class="form-control" placeholder="Informe o telefone" id="fixo" maxlength="13" onkeydown="javascript: fMasc( this, mTel );">
+                                                      </div>
+
+                                                      <div class="form-group col-sm-3">
+                                                        <label>Telefone Celular</label>
+                                                        <input name="celular" type="phone" class="form-control" placeholder="Informe o Celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );">
+                                                      </div>
+
+                                                      <div class="form-group col-sm-3">
+                                                        <label>Data de Nascimento</label>
+                                                        <input name="dataNasc" type="date" class="form-control" placeholder="dd/mm/aaaa" id="data" required>
+                                                      </div>                            
+
+                                                      <div class="form-group col-sm-3">
+                                                        <label>Sexo</label>
+                                                        <select name="sexo" id="sexo" class="form-control mr-sm-2" required>
+                                                          <option>Selecione</option>
+                                                          <option>Masculino</option>
+                                                          <option>Feminino</option>
+                                                        </select>
+                                                      </div>
+
+                                                      <div class="form-group col-sm-2">
+                                                        <label>CEP</label>
+                                                        <input name="cep" id="cep" type="text" class="form-control" placeholder="Informe o CEP" id="cep" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" onblur="pesquisacep(this.value);" required>
+                                                      </div>
+
+                                                      <div class="form-group col-sm-8">
+                                                        <label>Logradouro</label>
+                                                        <input name="logradouro" id="rua" type="text" placeholder="Infome o endereço" class="form-control" required>
+                                                      </div>
+
+                                                      <div class="form-group col-sm-2">
+                                                        <label>Número</label>
+                                                        <input name="endNumero" id="numero" type="number" placeholder="Nº 1234" class="form-control" required>
+                                                      </div>
+
+                                                      <div class="form-group col-sm-6">
+                                                        <label>Complemento</label>
+                                                        <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control" required>
+                                                      </div>
+
+                                                      <div class="form-group col-sm-3">
+                                                        <label>Bairro</label>
+                                                        <input name="bairro" id="bairro" type="text" placeholder="Informe o bairro" class="form-control" required>
+                                                      </div>
+
+                                                      <div class="form-group col-sm-2">
+                                                        <label>Cidade</label>
+                                                        <input name="cidade" id="cidade" type="text" placeholder="Informe a cidade" class="form-control" required>
+                                                      </div>                            
+
+                                                      <div class="form-group col-sm-1">
+                                                        <label>UF</label>
+                                                        <input type="text" name="estado" id="estado" class="form-control mr-sm-2" required>                                
+                                                      </div>
+
+                                                      <div class="form-group col-sm-12">
+                                                        <hr></hr>
+                                                      </div>
+
+                                                      <div class="col-md-7">
+                                                        <!--alinhamento dos Botões-->
+                                                      </div>                                    
+
+                                                      <div class="col-md-2 col-sm-12 col-xs-6">
+                                                        <button type="reset" class="btn btn-warning btn-block">LIMPAR</button>
+                                                      </div>
+
+                                                      <div class="col-md-3 col-sm-12 col-xs-6">
+                                                        <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
+                                                      </div>                                              
+                                                    </form>
+                                                  </div>                                                  
+                                                </div>
+                                              </div>
+                                            </div>
+                                          </div>
+                                        </td>    
+                                      </tr>
+                                <?php
+                                      }
+                                      $resultado->close();
+                                      } 
+                                ?>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
                           
-
-                          
-                           
-                            <div class="form-group col-sm-2">                                                                                 
-                              <select class="form-control" required>
-                                <option>Código</option>
-                                <option>Nome</option>
-                                <option>Laboratório</option>                                            
-                              </select>                                        
-                            </div>
-
-                            <div class="form-group col-sm-8">                                                                            
-                              <input name="" type="text" class="form-control" placeholder="Descreva o que deseja buscar" required autofocus>
-                            </div>
-
-                            <div class="form-group col-sm-2">                                       
-                              <button class="btn btn-primary btn-block" type="button"><i class="fa fa-search"></i> Buscar</button>
-                            </div>
-
-                            <br>                                    
-                            <!--tabelas-->
-                            <div class="table-responsive col-xs-12 col-sm-12 col-md-12">
-                              <label>SELECIONE O MEDICAMENTO PARA EDITAR:</label>
-                              <table class="table table-bordered table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>
-                                      Código
-                                    </th>
-                                    <th>
-                                      <small>Nome</small>
-                                    </th>
-                                    <th>
-                                      <small>Laboratório</small>
-                                    </th>
-                                    <th>
-                                      <small>Tarja</small>
-                                    </th>
-                                    <th>
-                                      <small>Descrição</small>
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr>
-                                    <th class="text-muted"></th>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                  </tr>
-                                  <tr>
-                                    <th class="text-muted"></th>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                  </tr>
-                                  <tr>
-                                    <th class="text-muted"></th>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                  </tr>
-                                  <tr>
-                                    <th class="text-muted"></th>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                  </tr>
-                                  <tr>
-                                    <th class="text-muted"></th>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                  </tr>
-                                  <tr>
-                                    <th class="text-muted"></th>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                    <td class="text-muted"></td>
-                                  </tr>                                              
-                                </tbody>
-                              </table>
-                            </div>
-
-                            <div class="form-group col-sm-6">
-                              <label>Nome</label>
-                              <input name="nome" type="text" class="form-control" placeholder="Nome do Medicamento" pattern="[a-zA-Z\s]+$" required>
-                            </div>
-
-                            <div class="form-group col-sm-6">
-                              <label>Laboratório</label>
-                              <input name="laboratorio" type="text" class="form-control" placeholder="Laboratório" required>
-                            </div>
-
-                            <div class="form-group col-sm-12">
-                              <label>Descrição</label>
-                              <textarea class="form-control" rows="3"></textarea>
-                            </div>                            
-
-                            <div class="form-group col-sm-3">
-                              <label>Data de Cadastro</label>
-                              <input name="DataCadastro" type="date" class="form-control" placeholder="Data de cadastro" required>
-                            </div>
-
-                            <div class="form-group col-sm-6">
-                              <label>Princípio Ativo</label>
-                              <input name="principioAtivo" type="text" class="form-control" placeholder="Princípio atívo da medicação" required>
-                            </div>
-
-                            
-
-                            <div class="form-group col-sm-3">
-                              <label>Quantidade</label><br>
-                              <input name="qtd" type="number" class="form-control" placeholder="Quantidade" required>
-                            </div>
-
-                            <div class="form-group col-sm-6">
-                              <label>Tarja</label>
-                              <select name="tarja" class="form-control mr-sm-2" required>
-                                <option>Vermelha (Com retenção da Receita)</option>
-                                <option>Vermelha (Sem retenção da Receita)</option>
-                                <option>Preta</option>
-                                <option>Amarela</option>
-                                <option>Sem Tarja</option>
-                              </select>
-                            </div>
-
-                            <div class="form-group col-sm-6">
-                              <label>Uso Contínuo</label>
-                              <select name="uso" class="form-control mr-sm-6" required>
-                                <option>Sim</option>
-                                <option>Não</option>
-                              </select>
-                            </div>
-
-                            <div class="col-md-7">
-                            <!--alinhamento dos Botões-->
-                            </div>                                    
-
-                            <div class="col-md-2 col-sm-12 col-xs-6">
-                              <button type="reset" class="btn btn-warning btn-block">LIMPAR</button>
-                            </div>
-
-                            <div class="col-md-3 col-sm-12 col-xs-6">
-                              <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
-                            </div>
-                          </form>
                         </div>
                       </div>
 
