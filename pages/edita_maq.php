@@ -3,8 +3,7 @@ session_start();
 include('conexao.php');
 // RECEBENDO OS DADOS PREENCHIDOS DO FORMULÁRIO !
 
-$idtecnico      = $_POST ["idtecnico"];
-$coren          = $_POST ["coren"];
+$idmaqueiro     = $_POST ["idmaqueiro"];
 $nome           = $_POST ["nome"];  //atribuição do campo "nome" vindo do formulário para variavel  
 $email          = $_POST ["email"]; //atribuição do campo "email" vindo do formulário para variavel
 $fixo           = $_POST ["fixo"];  //atribuição do campo "ddd" vindo do formulário para variavel
@@ -20,7 +19,7 @@ $cidade         = $_POST ["cidade"];  //atribuição do campo "cidade" vindo do 
 $estado         = $_POST ["estado"];  //atribuição do campo "estado" vindo do formulário para variavel
 
 
-$query = "UPDATE tecnico SET NOME='$nome',COREN='$coren',EMAIL='$email',FIXO='$fixo',DATANASC='$dataNasc',SEXO='$sexo',CEP='$cep',NUMERO='$endNumero',COMPLEMENTO='$complemento',BAIRRO='$bairro',CIDADE='$cidade',ESTADO='$estado',LOGRADOURO='$logradouro',CELULAR='$celular' WHERE IDTECNICO = '$idtecnico' ";
+$query = "UPDATE maqueiro SET NOME='$nome',EMAIL='$email',FIXO='$fixo',DATANASC='$dataNasc',SEXO='$sexo',CEP='$cep',NUMERO='$endNumero',COMPLEMENTO='$complemento',BAIRRO='$bairro',CIDADE='$cidade',ESTADO='$estado',LOGRADOURO='$logradouro',CELULAR='$celular' WHERE IDMAQUEIRO = '$idmaqueiro' ";
 
 mysqli_query($conexao,$query); //Realiza a consulta
  
@@ -28,7 +27,7 @@ if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha,
   
 ?>  <script>
   alert('O cadastro foi atualizado com sucesso!');
-  location.href="tecnico.php";
+  location.href="maqueiro.php";
   </script>
 <?php
 
@@ -38,7 +37,7 @@ if(mysqli_affected_rows($conexao) == 1){ //verifica se foi afetada alguma linha,
 ?>
   <script>
   alert('Erro, não possível inserir no banco de dados');
-  location.href="tecnico.php";
+  location.href="maqueiro.php";
   </script>
   <?php  
 }

@@ -54,22 +54,20 @@ mysqli_query($conexao,$query2);
 
  
 if(mysqli_affected_rows($conexao) == 2){ //verifica se foi afetada alguma linha, nesse caso inserida alguma linha
-
-?>	
-
-	<script>
-		alert('O cadastro foi efetuado com sucesso!');
-		location.href="medicos.php";	
-	</script>
 	
+?>	<script>
+	alert('O cadastro foi efetuado com sucesso!');
+	location.href="medicos.php";
+	</script>
 <?php
-} 
-else 
-{
+
+   /* echo "<p>Cadastro feito com sucesso</p>";
+    echo '<a href="cadastro.html">Voltar para formulário de cadastro</a>'; //Apenas um link para retornar para o formulário de cadastro*/
+} else {
 ?>
 	<script>
 	alert('Erro, não possível inserir no banco de dados');
-	return false;
+	location.href="medicos.php";
 	</script>
   <?php  
 }

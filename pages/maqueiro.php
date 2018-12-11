@@ -194,428 +194,478 @@
                   }
                 };
               </script>
-            </head>
 
-            <body>
-              <div id="wrapper">
+              <script type="text/javascript">
 
-                <nav class="navbar navbar-default navbar-static-top"  style="margin-bottom: 0">
-                  <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
+                function compararSenha( ){
 
-                    <a href="#" class="navbar-left">
-                      <img src="../img/logo2.png" width="40" height="40" alt=""></img> 
-                    </a>
+                  senha = document.getElementById('senha').value;
+                  senhaConfirm = document.getElementById('senhaConfirm').value;    
 
-                    <a class="navbar-brand" href="home.php">                                                           
-                      PROMETHEUS
-                    </a>
-                  </div>
-                  <!-- /.navbar-header -->
-                  <ul class="nav navbar-top-links navbar-right">
+                  if (senha != senhaConfirm)
+                  {
+                    document.getElementById('divSenha').className = 'form-group col-sm-4 has-error';
+                    document.getElementById('divsenhaConfirm').className = 'form-group col-sm-4 has-error';
+                    alert("Senhas diferentes!");
+                    return false;     
+                  }
+                  else{
+                    document.formUser.submit();
 
-                    <!-- /.dropdown -->
-                    <li class="dropdown">
-                      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <?php echo "Olá, ".$_SESSION['userName'];?> <i class="fa fa-caret-down"></i>
+                  }      
+                    /*
+                    document.getElementById('senha').className = 'form-control is-valid';
+                    document.getElementById('senhaConfirm').className = 'form-control is-valid';
+                    confirm_password.setCustomValidity('');
+                    */
+                  } 
+
+                </script>
+
+              </head>
+
+              <body>
+                <div id="wrapper">
+
+                  <nav class="navbar navbar-default navbar-static-top"  style="margin-bottom: 0">
+                    <div class="navbar-header">
+                      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                      </button>
+
+                      <a href="#" class="navbar-left">
+                        <img src="../img/logo2.png" width="40" height="40" alt=""></img> 
                       </a>
-                      <ul class="dropdown-menu dropdown-user">
-                        <li>
-                          <a href="sair.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                  <div class="navbar-default sidebar" role="navigation">
-                    <div class="sidebar-nav navbar-collapse">
-                      <ul class="nav" id="side-menu">
 
-                        <li class="sidebar-search">
-                          <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                              <button class="btn btn-default" type="button">
-                                <i class="fa fa-search"></i>
-                              </button>
-                            </span>
-                          </div>
-                          
-                        </li>
-
-
-                        <li>
-                          <a href="home.php"> <i class="fa fa-home fa-fw"></i> <b>Home</b></a>                            
-                        </li>
-                        <li>
-                          <a href="consulta.php"><i class="fa fa-user-md fa-fw"></i> <b>Consultas</b></a>
-                        </li>
-                        <li>
-                          <a href="triagem.php"><i class="fa fa-stethoscope fa-fw"></i> <b>Triagens</b></a>
-                        </li>
-                        <li>
-                          <a href="prontuario.php"><i class="fa fa-clipboard fa-fw"></i> <b>Prontuários</b></a>                            
-                        </li>
-                        <li>
-                          <a href="#"><i class="fa fa-plus-circle fa-fw"></i> <b>Cadastros</b><span class="fa arrow"></span></a>
-                          <ul class="nav nav-second-level">
-                            <li>
-                              <a href="paciente.php">Paciente</a>
-                            </li>
-                            <li>
-                              <a href="medicos.php">Médico</a>
-                            </li>
-                            <li>
-                              <a href="enfermeiro.php">Enfermeiro</a>
-                            </li>
-                            <li>
-                              <a href="tecnico.php">Técnico de Enfermagem</a>
-                            </li>                                
-                            <li>
-                              <a href="maqueiro.php">Maqueiro</a>
-                            </li>
-                            <li>
-                              <a href="medicamento.php">Medicamento</a>                            
-                            </li>
-                            <li>
-                              <a href="usuario.php">Usuário</a>                            
-                            </li>
-                          </ul>
-                          <!-- /.nav-second-level -->
-                        </li>                        
-                        
-                        <li>
-                          <a href="#"><i class="fa fa-book fa-fw"></i> <b>Sobre</b></a>
-
-                        </li>
-
-                      </ul>
+                      <a class="navbar-brand" href="home.php">                                                           
+                        PROMETHEUS
+                      </a>
                     </div>
-                    <!-- /.sidebar-collapse -->
-                  </div>
-                  <!-- /.navbar-static-side -->
-                </nav>
-                <!-- Page Content -->
-                <div id="page-wrapper">
-                  <div class="container-fluid">
+                    <!-- /.navbar-header -->
+                    <ul class="nav navbar-top-links navbar-right">
 
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <div class="panel panel-primary">
+                      <!-- /.dropdown -->
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                          <?php echo "Olá, ".$_SESSION['userName'];?> <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-user">
+                          <li>
+                            <a href="sair.php"><i class="fa fa-sign-out fa-fw"></i> Sair</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
+                    <div class="navbar-default sidebar" role="navigation">
+                      <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
 
-                          <div class="panel-heading">
-                            <b>MAQUEIRO</b>
-                          </div>
-                          <div class="panel-body">
-                            <ul class="nav nav-tabs">
-                              <li class="active"><a href="#Cadastrar" data-toggle="tab">Cadastrar</a>
-                              </li>
-                              <li><a href="#Consultar" data-toggle="tab">Consultar</a>
-                              </li>
-                            </ul>
-
-                            <br>
-
-                            <div class="tab-content">
-                              <!--ABA CADASTRAR-->
-                              <div class="tab-pane fade in active" id="Cadastrar">
-                                <div class="row">
-                                  <form role="form" action="cadastro_maq.php" method="post">
-
-                                    <div class="form-group col-sm-2">
-                                      <label>CPF</label>
-                                      <input name="cpf" id="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" required>
-                                    </div>                         
-
-                                    <div class="form-group col-md-8">
-                                      <label>Nome</label>
-                                      <input name="nome" id="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$" required>
-                                    </div>
-
-                                    <div class="form-group col-sm-5">
-                                     <label>E-mail</label>
-                                     <input name="email" id="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
-                                   </div>
-                                   
-                                   <div class="form-group col-sm-2">
-                                    <label>Telefone Fixo</label>
-                                    <input name="fixo" type="phone" class="form-control" placeholder="Digite seu telefone" id="telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );">
-                                    <!--pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
-                                  </div>
-
-                                  <div class="form-group col-sm-2">
-                                    <label>Telefone Móvel</label>
-                                    <input name="celular" type="phone" class="form-control" placeholder="Digite seu número de celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );">
-                                    <!-- pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
-                                  </div>
-
-                                  <div class="form-group col-sm-3">
-                                    <label>Data de Nascimento</label>
-                                    <input name="dataNasc" type="date" class="form-control" placeholder="dd/mm/aaaa" id="data" required>
-                                  </div>                            
-
-                                  <div class="form-group col-sm-3">
-                                    <label>Sexo</label>
-                                    <select class="form-control mr-sm-2" name="sexo" id="sexo" required>
-                                      <option>Selecione</option>
-                                      <option>Masculino</option>
-                                      <option>Feminino</option>
-                                    </select>
-                                  </div>
-
-                                  <div class="form-group col-sm-2">
-                                    <label>CEP</label>
-                                    <input name="cep" id="cep" type="text" class="form-control" placeholder="Informe o CEP" onblur="pesquisacep(this.value);" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" required>
-                                  </div>
-
-                                  <div class="form-group col-sm-8">
-                                    <label>Logradouro</label>
-                                    <input name="logradouro" id="rua" type="text" placeholder="Infome o endereço" class="form-control" required>
-                                  </div>
-
-                                  <div class="form-group col-sm-2">
-                                    <label>Número</label>
-                                    <input name="endNumero" id="endNumero" type="number" placeholder="Nº 1234" class="form-control" required>
-                                  </div>
-
-                                  <div class="form-group col-sm-4">
-                                    <label>Complemento</label>
-                                    <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control">
-                                  </div>
-
-                                  <div class="form-group col-sm-4">
-                                    <label>Bairro</label>
-                                    <input name="bairro" id="bairro" type="text" placeholder="Informe o bairro" class="form-control" required>
-                                  </div>
-
-                                  <div class="form-group col-sm-3">
-                                    <label>Cidade</label>
-                                    <input name="cidade" id="cidade" type="text" placeholder="Informe a cidade" class="form-control" required>
-                                  </div>
-
-                                  <div class="form-group col-sm-1">
-                                    <label>UF</label> 
-                                    <input name="estado" id="uf" type="text" class="form-control" required>                                 
-                                  </div>
-
-                                  <div class="form-group col-sm-12">
-                                    <hr></hr>
-                                  </div>
-
-                                  <div class="form-group col-sm-4">
-                                    <label>Usuário</label>
-                                    <input name="usuario" type="text" class="form-control" placeholder="Usuário" required="required">
-
-                                  </div>
-
-                                  <div class="form-group col-sm-4" id="divSenha" required="required">
-                                    <label>Senha</label>
-                                    <input name="senha" id="senha" type="password" class="form-control is-invalid" placeholder="Senha" pattern=".{8,}" title="No mínimo 8 caracteres">
-
-                                  </div>
-
-                                  <div class="form-group col-sm-4" id="divsenhaConfirm" required="required">
-                                    <label>Confirmar Senha</label>
-                                    <input name="senhaConfirm" id="senhaConfirm" type="password" class="form-control" placeholder="Confirmar Senha" pattern=".{8,}" title="No mínimo 8 caracteres">
-
-                                  </div>
-
-                                  <br/>
-
-                                  <div class="col-md-7">
-                                    <!--alinhamento dos Botões-->
-                                  </div>                                    
-
-                                  <div class="col-md-2 col-sm-12 col-xs-6">
-                                    <button type="reset" class="btn btn-warning btn-block">LIMPAR</button>
-                                  </div>
-
-                                  <div class="col-md-3 col-sm-12 col-xs-6">
-                                    <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
-                                  </div>   
-
-                                </form>
-                              </div>
+                          <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                              <input type="text" class="form-control" placeholder="Search...">
+                              <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                  <i class="fa fa-search"></i>
+                                </button>
+                              </span>
                             </div>
 
-                            <!--ABA CONSULTAR-->
-                            <div class="tab-pane fade" id="Consultar">
-                              <div class="row">
-                                <div class="col-lg-12">
-                                  <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                      Consulta de Cadastros:
+                          </li>
+
+
+                          <li>
+                            <a href="home.php"> <i class="fa fa-home fa-fw"></i> <b>Home</b></a>                            
+                          </li>
+                          <li>
+                            <a href="consulta.php"><i class="fa fa-user-md fa-fw"></i> <b>Consultas</b></a>
+                          </li>
+                          <li>
+                            <a href="triagem.php"><i class="fa fa-stethoscope fa-fw"></i> <b>Triagens</b></a>
+                          </li>
+                          <li>
+                            <a href="prontuario.php"><i class="fa fa-clipboard fa-fw"></i> <b>Prontuários</b></a>                            
+                          </li>
+                          <li>
+                            <a href="#"><i class="fa fa-plus-circle fa-fw"></i> <b>Cadastros</b><span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                              <li>
+                                <a href="paciente.php">Paciente</a>
+                              </li>
+                              <li>
+                                <a href="medicos.php">Médico</a>
+                              </li>
+                              <li>
+                                <a href="enfermeiro.php">Enfermeiro</a>
+                              </li>
+                              <li>
+                                <a href="tecnico.php">Técnico de Enfermagem</a>
+                              </li>                                
+                              <li>
+                                <a href="maqueiro.php">Maqueiro</a>
+                              </li>
+                              <li>
+                                <a href="medicamento.php">Medicamento</a>                            
+                              </li>
+                              <li>
+                                <a href="usuario.php">Usuário</a>                            
+                              </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                          </li>                        
+
+                          <li>
+                            <a href="#"><i class="fa fa-book fa-fw"></i> <b>Sobre</b></a>
+
+                          </li>
+
+                        </ul>
+                      </div>
+                      <!-- /.sidebar-collapse -->
+                    </div>
+                    <!-- /.navbar-static-side -->
+                  </nav>
+                  <!-- Page Content -->
+                  <div id="page-wrapper">
+                    <div class="container-fluid">
+
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <div class="panel panel-primary">
+
+                            <div class="panel-heading">
+                              <b>MAQUEIRO</b>
+                            </div>
+                            <div class="panel-body">
+                              <ul class="nav nav-tabs">
+                                <li class="active"><a href="#Cadastrar" data-toggle="tab">Cadastrar</a>
+                                </li>
+                                <li><a href="#Consultar" data-toggle="tab">Consultar</a>
+                                </li>
+                              </ul>
+
+                              <br>
+
+                              <div class="tab-content">
+                                <!--ABA CADASTRAR-->
+                                <div class="tab-pane fade in active" id="Cadastrar">
+                                  <div class="row">
+                                    <form role="form" id="formUser" action="cadastro_maq.php" method="post" onsubmit="return compararSenha();">
+
+                                      <div class="form-group col-sm-2">
+                                        <label>CPF</label>
+                                        <input name="cpf" id="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" required>
+                                      </div>                         
+
+                                      <div class="form-group col-md-8">
+                                        <label>Nome</label>
+                                        <input name="nome" id="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$" required>
+                                      </div>
+
+                                      <div class="form-group col-sm-5">
+                                       <label>E-mail</label>
+                                       <input name="email" id="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                     </div>
+
+                                     <div class="form-group col-sm-2">
+                                      <label>Telefone Fixo</label>
+                                      <input name="fixo" type="phone" class="form-control" placeholder="Digite seu telefone" id="telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );">
+                                      <!--pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
                                     </div>
-                                    <div class="panel-body">                                
-                                      <table width="100%" class="table table-striped table-bordered table-hover" id="maqueiro"> 
-                                        <thead>
-                                          <tr>
-                                            <th>
-                                              <b>CPF</b>
-                                            </th>
-                                            <th>
-                                              <b>NOME</b>
-                                            </th>
-                                            <th>
-                                              <b>EMAIL</b>
-                                            </th>
-                                            <th>
-                                              <b>DATA CADASTRO</b>
-                                            </th>
-                                            <th>
-                                              <b>AÇÕES</b>
-                                            </th>                                                    
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <?php  
-                                          include_once("conexao.php");
 
-                                          $sql = "select cpf,nome,email,datacadastro,bairro,cep,cidade,complemento,datanasc,estado,fixo,idmaqueiro,logradouro,numero,sexo,celular from maqueiro";
+                                    <div class="form-group col-sm-2">
+                                      <label>Telefone Móvel</label>
+                                      <input name="celular" type="phone" class="form-control" placeholder="Digite seu número de celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );">
+                                      <!-- pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
+                                    </div>
 
-                                          $consulta = mysqli_query($conexao,$sql); 
-                                          if ($resultado = $consulta){
-                                            while ($obj = $resultado->fetch_object()){ 
-                                              ?>
-                                              <tr>
-                                                <th ><?php printf($obj->cpf) ?></th>
-                                                <td ><?php printf($obj->nome) ?></td>
-                                                <td ><?php printf($obj->email) ?></td>
-                                                <td ><?php printf($obj->datacadastro) ?></td>
-                                                <td>
+                                    <div class="form-group col-sm-3">
+                                      <label>Data de Nascimento</label>
+                                      <input name="dataNasc" type="date" class="form-control" placeholder="dd/mm/aaaa" id="data" required>
+                                    </div>                            
 
-                                                  <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $obj->idmaqueiro; ?>" data-whatevernome="<?php echo $obj->nome; ?>" data-whateverbairro="<?php echo $obj->bairro;?>" data-whatevercep="<?php echo $obj->cep;?>" data-whatevercidade="<?php echo $obj->cidade;?>" data-whatevercomplemento="<?php echo $obj->complemento;?>" data-whateverdatacadastro="<?php echo $obj->datacadastro;?>" data-whateverdatanasc="<?php echo $obj->datanasc;?>" data-whateveremail="<?php echo $obj->email;?>" data-whateverestado="<?php echo $obj->estado;?>"   data-whateverlogradouro="<?php echo $obj->logradouro;?>" data-whatevernumero="<?php echo $obj->numero;?>" data-whateversexo="<?php echo $obj->sexo;?>" data-whateverfixo="<?php echo $obj->fixo;?>" data-whatevercelular="<?php echo $obj->celular;?>" data-whatevercpf="<?php echo $obj->cpf;?>" >Editar</button>
-                                                  <button type="button" class="btn btn-xs btn-danger">Apagar</button>
+                                    <div class="form-group col-sm-3">
+                                      <label>Sexo</label>
+                                      <select class="form-control mr-sm-2" name="sexo" id="sexo" required>
+                                        <option>Selecione</option>
+                                        <option>Masculino</option>
+                                        <option>Feminino</option>
+                                      </select>
+                                    </div>
 
-                                                  <!-- Modal -->
-                                                  <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="form-group col-sm-2">
+                                      <label>CEP</label>
+                                      <input name="cep" id="cep" type="text" class="form-control" placeholder="Informe o CEP" onblur="pesquisacep(this.value);" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" required>
+                                    </div>
 
-                                                    <div class="modal-dialog modal-lg" role="document">
+                                    <div class="form-group col-sm-8">
+                                      <label>Logradouro</label>
+                                      <input name="logradouro" id="rua" type="text" placeholder="Infome o endereço" class="form-control" required>
+                                    </div>
 
-                                                      <div class="modal-content">
+                                    <div class="form-group col-sm-2">
+                                      <label>Número</label>
+                                      <input name="endNumero" id="endNumero" type="number" placeholder="Nº 1234" class="form-control" required>
+                                    </div>
 
-                                                        <div class="modal-header">
-                                                          <h5 class="modal-title" id="exampleModalLabel">Editar Enfermeiro</h5>
-                                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                            <span aria-hidden="true">&times;</span>
-                                                          </button>
-                                                        </div>
+                                    <div class="form-group col-sm-4">
+                                      <label>Complemento</label>
+                                      <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control">
+                                    </div>
 
-                                                        <div class="modal-body">
-                                                          <div class="tab-pane fade in active" id="Cadastrar">
+                                    <div class="form-group col-sm-4">
+                                      <label>Bairro</label>
+                                      <input name="bairro" id="bairro" type="text" placeholder="Informe o bairro" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group col-sm-3">
+                                      <label>Cidade</label>
+                                      <input name="cidade" id="cidade" type="text" placeholder="Informe a cidade" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group col-sm-1">
+                                      <label>UF</label> 
+                                      <input name="estado" id="uf" type="text" class="form-control" required>                                 
+                                    </div>
+
+                                    <div class="form-group col-sm-12">
+                                      <hr></hr>
+                                    </div>
+
+                                    <div class="form-group col-sm-4">
+                                      <label>Usuário</label>
+                                      <input name="usuario" type="text" class="form-control" placeholder="Usuário" required="required">
+
+                                    </div>
+
+                                    <div class="form-group col-sm-4" id="divSenha">
+                                      <label>Senha</label>
+                                      <input name="senha" id="senha" type="password" class="form-control is-invalid" placeholder="Senha" pattern=".{8,}" title="No mínimo 8 caracteres" required>
+
+                                    </div>
+
+                                    <div class="form-group col-sm-4" id="divsenhaConfirm">
+                                      <label>Confirmar Senha</label>
+                                      <input name="senhaConfirm" id="senhaConfirm" type="password" class="form-control" placeholder="Confirmar Senha" pattern=".{8,}" title="No mínimo 8 caracteres" required>
+
+                                    </div>
+
+                                    <br/>
+
+                                    <div class="col-md-7">
+                                      <!--alinhamento dos Botões-->
+                                    </div>                                    
+
+                                    <div class="col-md-2 col-sm-12 col-xs-6">
+                                      <button type="reset" class="btn btn-warning btn-block">LIMPAR</button>
+                                    </div>
+
+                                    <div class="col-md-3 col-sm-12 col-xs-6">
+                                      <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
+                                    </div>   
+
+                                  </form>
+                                </div>
+                              </div>
+
+                              <!--ABA CONSULTAR-->
+                              <div class="tab-pane fade" id="Consultar">
+                                <div class="row">
+                                  <div class="col-lg-12">
+                                    <div class="panel panel-default">
+                                      <div class="panel-heading">
+                                        Consulta de Cadastros:
+                                      </div>
+                                      <div class="panel-body">                                
+                                        <table width="100%" class="table table-striped table-bordered table-hover" id="maqueiro"> 
+                                          <thead>
+                                            <tr>
+                                              <th>
+                                                <b>CPF</b>
+                                              </th>
+                                              <th>
+                                                <b>NOME</b>
+                                              </th>
+                                              <th>
+                                                <b>EMAIL</b>
+                                              </th>
+                                              <th>
+                                                <b>DATA CADASTRO</b>
+                                              </th>
+                                              <th>
+                                                <b>AÇÕES</b>
+                                              </th>                                                    
+                                            </tr>
+                                          </thead>
+                                          <tbody>
+                                            <?php  
+                                            include_once("conexao.php");
+
+                                            $sql = "select idmaqueiro,nome,email,cpf,fixo,celular,datanasc,sexo,cep,logradouro,numero,complemento,bairro,cidade,estado,datacadastro from maqueiro";
+
+                                            $consulta = mysqli_query($conexao,$sql); 
+                                            if ($resultado = $consulta){
+                                              while ($obj = $resultado->fetch_object()){ 
+                                                ?>
+                                                <tr>
+                                                  <th ><?php printf($obj->cpf) ?></th>
+                                                  <td ><?php printf($obj->nome) ?></td>
+                                                  <td ><?php printf($obj->email) ?></td>
+                                                  <td ><?php printf($obj->datacadastro) ?></td>
+                                                  <td>
+
+                                                   <button type="button" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="<?php echo $obj->idmaqueiro; ?>" data-whatevernome="<?php echo $obj->nome; ?>" data-whateveremail="<?php echo $obj->email; ?>" data-whatevercpf="<?php echo $obj->cpf; ?>" data-whateverfixo="<?php echo $obj->fixo; ?>" data-whatevercelular="<?php echo $obj->celular; ?>" data-whateverdatanasc="<?php echo $obj->datanasc; ?>" data-whateversexo="<?php echo $obj->sexo; ?>" data-whatevercep="<?php echo $obj->cep; ?>" data-whateverlogradouro="<?php echo $obj->logradouro; ?>" data-whatevernumero="<?php echo $obj->numero; ?>" data-whatevercomplemento="<?php echo $obj->complemento; ?>" data-whateverbairro="<?php echo $obj->bairro; ?>" data-whatevercidade="<?php echo $obj->cidade; ?>" data-whateverestado="<?php echo $obj->estado; ?>" data-whateverdatacadastro="<?php echo $obj->datacadastro; ?>" >Editar</button>
+                                                <button type="button" class="btn btn-xs btn-danger">Apagar</button>
+
+                                                    <!-- Modal -->
+                                                    <div class="modal fade bd-example-modal-lg" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+                                                      <div class="modal-dialog modal-lg" role="document">
+
+                                                        <div class="modal-content">
+
+                                                          <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">Editar Maqueiro</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                              <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                          </div>
+
+                                                          <div class="modal-body">
                                                             <div class="row">
-                                                              <form role="form" action="edita_maq.php" method="post">
-                                                              <!--
-                                                              <div class="form-group-sm col-sm-6">
-                                                                <label>CPF</label>
-                                                                <input name="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" value = "" required>
+                                                              <div class="tab-pane fade in active" id="Cadastrar">
+                                                                <form role="form" action="edita_maq.php" method="post">
+                                                                      <!--
+                                                                      <div class="form-group-sm col-sm-6">
+                                                                            <label>CPF</label>
+                                                                            <input name="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" value = "" required>
+                                                                          </div>
+                                                                        -->
+                                                                        <div class="form-group col-sm-2">
+                                                                          <label>CPF</label>
+                                                                          <input name="cpf" id="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" required>
+                                                                        </div>                             
+
+                                                                        <div class="form-group-sm col-md-6">
+                                                                          <label>Nome</label>
+                                                                          <input name="nome" id="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$" required>
+                                                                        </div>
+
+                                                                        <div class="form-group-sm col-sm-6">
+                                                                         <label>E-mail</label>
+                                                                         <input name="email" id="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+                                                                       </div>
+
+                                                                       <div class="form-group-sm col-sm-6">
+                                                                        <label>Telefone Fixo</label>
+                                                                        <input name="fixo" id="fixo" type="phone" class="form-control" placeholder="Digite seu telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );">
+                                                                        <!--pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
+                                                                      </div>
+
+                                                                      <div class="form-group-sm col-sm-6">
+                                                                        <label>Telefone Móvel</label>
+                                                                        <input name="celular" id="celular" type="phone" class="form-control" placeholder="Digite seu número de celular" maxlength="14" onkeydown="javascript: fMasc( this, mTel );">
+                                                                        <!-- pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
+                                                                      </div>
+
+                                                                      <div class="form-group-sm col-sm-6">
+                                                                        <label>Data de Nascimento</label>
+                                                                        <input name="dataNasc" id="datanasc" type="date" class="form-control" placeholder="dd/mm/aaaa" required>
+                                                                      </div>                            
+
+                                                                      <div class="form-group-sm col-sm-6">
+                                                                        <label>Sexo</label>
+                                                                        <select class="form-control mr-sm-2" name="sexo"  id="sexo" required>
+                                                                          <option>Selecione</option>
+                                                                          <option>Masculino</option>
+                                                                          <option>Feminino</option>
+                                                                        </select>
+                                                                      </div>
+
+                                                                      <div class="form-group-sm col-sm-6">
+                                                                        <label>CEP</label>
+                                                                        <input name="cep" id="cep" type="text" class="form-control" placeholder="Informe o CEP" onblur="pesquisacep(this.value);" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" required>
+                                                                      </div>
+
+                                                                      <div class="form-group-sm col-sm-6">
+                                                                        <label>Logradouro</label>
+                                                                        <input name="logradouro" type="text" placeholder="Infome o endereço" class="form-control" id="logradouro"  required>
+                                                                      </div>
+
+                                                                      <div class="form-group-sm col-sm-6">
+                                                                        <label>Número</label>
+                                                                        <input name="endNumero" type="number" placeholder="Nº 1234" class="form-control" id="numero"  required>
+                                                                      </div>
+
+                                                                      <div class="form-group col-sm-5">
+                                                                        <label>Complemento</label>
+                                                                        <input name="complemento" id="complemento" type="text" placeholder="Complemento" class="form-control">
+                                                                      </div>
+
+                                                                      <div class="form-group col-sm-3">
+                                                                        <label>Bairro</label>
+                                                                        <input name="bairro" id="bairro" type="text" placeholder="Informe o bairro" class="form-control" required>
+                                                                      </div>
+
+                                                                      <div class="form-group col-sm-2">
+                                                                        <label>Cidade</label>
+                                                                        <input name="cidade" id="cidade" type="text" placeholder="Informe a cidade" class="form-control" required>
+                                                                      </div>
+
+                                                                      <div class="form-group col-sm-2">
+                                                                        <label>UF</label> 
+                                                                        <select name="estado" id="estado" type="text" class="form-control mr-sm-2" required>
+                                                                          <option>Selecione</option>
+                                                                          <option value="AC">AC</option>
+                                                                          <option value="AL">AL</option>
+                                                                          <option value="AP">AP</option>
+                                                                          <option value="AM">AM</option>
+                                                                          <option value="BA">BA</option>
+                                                                          <option value="CE">CE</option>
+                                                                          <option value="DF">DF</option>
+                                                                          <option value="ES">ES</option>
+                                                                          <option value="GO">GO</option>
+                                                                          <option value="MA">MA</option>
+                                                                          <option value="MS">MS</option>
+                                                                          <option value="MT">MT</option>
+                                                                          <option value="MG">MG</option>
+                                                                          <option value="PA">PA</option>
+                                                                          <option value="PB">PB</option>
+                                                                          <option value="PR">PR</option>
+                                                                          <option value="PE">PE</option>
+                                                                          <option value="PI">PI</option>
+                                                                          <option value="RJ">RJ</option>
+                                                                          <option value="RN">RN</option>
+                                                                          <option value="RS">RS</option>
+                                                                          <option value="RO">RO</option>
+                                                                          <option value="RR">RR</option>
+                                                                          <option value="SC">SC</option>
+                                                                          <option value="SP">SP</option>
+                                                                          <option value="SE">SE</option>
+                                                                          <option value="TO">TO</option>
+                                                                        </select>                               
+                                                                      </div>
+
+                                                                      <input name="idmaqueiro" type="hidden" class="form-control" id="idmaqueiro" value="">
+
+                                                                      <div class="col-md-7">
+                                                                        <!--alinhamento dos Botões-->
+                                                                      </div>                                    
+
+                                                                      <div class="col-md-2 col-sm-12 col-xs-6">
+                                                                        <button type="reset" class="btn btn-warning btn-block">LIMPAR</button>
+                                                                      </div>
+
+                                                                      <div class="col-md-3 col-sm-12 col-xs-6">
+                                                                        <button type="submit" class="btn btn-primary btn-block">ALTERAR</button>
+                                                                      </div>   
+
+                                                                    </form>
+                                                                  </div>
+                                                                </div>   
                                                               </div>
-                                                            -->
-                                                            <div class="form-group col-sm-2">
-                                                              <label>CPF</label>
-                                                              <input name="cpf" id="cpf" type="text" class="form-control" placeholder="Digite o CPF" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" onkeydown="javascript: fMasc( this, mCPF );" maxlength="14" required>
-                                                            </div>                             
-
-                                                            <div class="form-group-sm col-md-6">
-                                                              <label>Nome</label>
-                                                              <input name="nome" type="text" class="form-control" placeholder="Digite seu nome" pattern="[a-zA-Z\s]+$" id="nome" required>
-                                                            </div>
-
-                                                            <div class="form-group-sm col-sm-6">
-                                                             <label>E-mail</label>
-                                                             <input name="email" type="email" class="form-control" placeholder="Digite seu e-mail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" id="email">
-                                                           </div>
-
-                                                           <div class="form-group-sm col-sm-6">
-                                                            <label>Telefone Fixo</label>
-                                                            <input name="fixo" type="phone" class="form-control" placeholder="Digite seu telefone" maxlength="13" onkeydown="javascript: fMasc( this, mTel );" id="fixo">
-                                                            <!--pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
-                                                          </div>
-
-                                                          <div class="form-group-sm col-sm-6">
-                                                            <label>Telefone Móvel</label>
-                                                            <input name="celular" type="phone" class="form-control" placeholder="Digite seu número de celular" maxlength="14" id="celular" onkeydown="javascript: fMasc( this, mTel );" id="celular">
-                                                            <!-- pattern="\([0-9]{2}\) [0-9]{4,6}-[0-9]{3,4}$"-->
-                                                          </div>
-
-                                                          <div class="form-group-sm col-sm-6">
-                                                            <label>Data de Nascimento</label>
-                                                            <input name="dataNasc" type="date" class="form-control" placeholder="dd/mm/aaaa" id="data" required>
-                                                          </div>                            
-
-                                                          <div class="form-group-sm col-sm-6">
-                                                            <label>Sexo</label>
-                                                            <select class="form-control mr-sm-2" name="sexo"  id="sexo" required>
-                                                              <option>Selecione</option>
-                                                              <option>Masculino</option>
-                                                              <option>Feminino</option>
-                                                            </select>
-                                                          </div>
-                                                            <!--
-                                                            <div class="form-group-sm col-md-6">
-                                                              <label>Especialidade</label>
-                                                              <input name="especialidade" type="text" class="form-control" placeholder="Digite a especialidade" pattern="[a-zA-Z\s]+$" value = "" required>
-                                                            </div>
-                                                          -->
-
-                                                          <div class="form-group-sm col-sm-6">
-                                                            <label>CEP</label>
-                                                            <input name="cep"  type="text" class="form-control" placeholder="Informe o CEP" id="cep" onblur="pesquisacep(this.value);" maxlength="10" onkeydown="javascript: fMasc( this, mCEP );" required>
-                                                          </div>
-
-                                                          <div class="form-group-sm col-sm-6">
-                                                            <label>Logradouro</label>
-                                                            <input name="logradouro"  type="text" placeholder="Infome o endereço" class="form-control" id="logradouro"  required>
-                                                          </div>
-
-                                                          <div class="form-group-sm col-sm-6">
-                                                            <label>Número</label>
-                                                            <input name="endNumero" type="number" placeholder="Nº 1234" class="form-control" id="numero"  required>
-                                                          </div>
-
-                                                          <div class="form-group-sm col-sm-6">
-                                                            <label>Complemento</label>
-                                                            <input name="complemento"  type="text" placeholder="Complemento" class="form-control" id="complemento"  required>
-                                                          </div>
-
-                                                          <div class="form-group-sm col-sm-6">
-                                                            <label>Bairro</label>
-                                                            <input name="bairro"  type="text" placeholder="Informe o bairro" class="form-control" id="bairro"  required>
-                                                          </div>
-
-                                                          <div class="form-group-sm col-sm-6">
-                                                            <label>Cidade</label>
-                                                            <input name="cidade" type="text" placeholder="Informe a cidade" class="form-control" id="cidade"  required>
-                                                          </div>
-
-                                                          <div class="form-group-sm col-sm-6">
-                                                            <label>UF</label> 
-                                                            <input name="estado" type="text" class="form-control" id="estado"  required>                                 
-                                                          </div>
-
-                                                          <input name="idmaq" type="hidden" class="form-control" id="idmaq" value="">
-
-                                                          <div class="col-md-7">
-                                                            <!--alinhamento dos Botões-->
-                                                          </div>                                    
-
-                                                          <div class="col-md-2 col-sm-12 col-xs-6">
-                                                            <button type="reset" class="btn btn-warning btn-block">LIMPAR</button>
-                                                          </div>
-
-                                                          <div class="col-md-3 col-sm-12 col-xs-6">
-                                                            <button type="submit" class="btn btn-primary btn-block">CADASTRAR</button>
-                                                          </div>   
-
-                                                        </form>
-                                                      </div>
-                                                    </div>   
-
-                                                  </div>
 
                                                        <!-- <div class="modal-footer">
                                                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -675,14 +725,14 @@
             <script type="text/javascript">
               $('#exampleModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget) // Button that triggered the modal
-                var idmaq = button.data('whatever') // Extract info from data-* attributes
+                var idmaqueiro = button.data('whatever') // Extract info from data-* attributes
                 var nome = button.data('whatevernome')
                 var email = button.data('whateveremail')
                 var cpf = button.data('whatevercpf')
                 var bairro = button.data('whateverbairro')
                 var cep = button.data('whatevercep')
                 var complemento  = button.data('whatevercomplemento')
-                ///var datacadastro = button.data('whateverdatacadastro')
+                var datacadastro = button.data('whateverdatacadastro')
                 var datanasc = button.data('whateverdatanasc')
                 var estado = button.data('whateverestado')
                 var logradouro = button.data('whateverlogradouro')
@@ -696,15 +746,15 @@
                 // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
                 var modal = $(this)
                 //modal.find('.modal-title').text('ID ' + idenf)
-                modal.find('#idmaq').val(idmaq)
+                modal.find('#idmaqueiro').val(idmaqueiro)
                 modal.find('#nome').val(nome)
                 modal.find('#email').val(email)
                 modal.find('#cpf').val(cpf)
                 modal.find('#bairro').val(bairro)
                 modal.find('#cep').val(cep)
                 modal.find('#complemento').val(complemento)
-                //modal.find('#datacadastro').val(datacadastro)
-                modal.find('#data').val(datanasc)
+                modal.find('#datacadastro').val(datacadastro)
+                modal.find('#datanasc').val(datanasc)
                 modal.find('#estado').val(estado)
                 modal.find('#logradouro').val(logradouro)
                 modal.find('#numero').val(numero)
